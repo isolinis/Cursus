@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 20:34:17 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/10/18 17:42:29 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/10/13 11:25:40 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/06 22:06:42 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "ft_format.c"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-		write(1, "Error", 7);
-	if (argc == 2)
-		ft_format(argv[1]);
-	return (0);
-}
+char	**ft_map_argv(int argc, char **argv);
+
+#endif

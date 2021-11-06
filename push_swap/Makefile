@@ -1,31 +1,41 @@
-SRCS =	push_swap.c		\
-		ft_format.c		\
-		ft_divide.c		\
-
 NAME = push_swap
+FLAGS = -Wall -Wextra -Werror
+SANITIZE = -fsanitize=address -g3
+INC = -I%.h -I$(LIB_DIR)%.h
 
-OBJS_DIR = objs/
-OBJS = $(SRCS:.c=.o)
-OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
+SRC_NAME =	push_swap.c		\
+			ft_map_argv.c	\
 
-CC = clang
+OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
 
-CC_FLAGS = -Wall -Wextra -Werror -o
-
-$(OBJS_DIR)%.o : %.c push_swap.h
-	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling: $<"
-	@clang $(CC_FLAGS) -c $< -o $@
-
-$(NAME): $(OBJECTS_PREFIXED)
-	@echo "push_swap Done!"
+LIB_DIR = ../Libft/
+SRC_DIR = ./src/
+OBJ_DIR = ./obj/
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	@make -C $(LIB_DIR) --silent
+	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
+	@echo "##### push_swap compiling finished! #####"
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@echo "##### Creating" [ $@ ] " #####"
+	@gcc $(FLAGS) -o $@ -c $< $(INC)
+
 clean:
-	rm -rf $(OBJS_DIR)
+	@make -C $(LIB_DIR) clean  --silent
+	@rm -f $(OBJ)
+	@rm -rf $(OBJ_DIR)
+	@echo "##### Removed object files #####"
 
 fclean: clean
-	rm -f $(NAME)
+	@make -C $(LIB_DIR) fclean  --silent
+	@rm -f $(NAME)
+	@echo "##### Removed binary files #####"
 
 re: fclean all
+
+.PHONY: all clean fclean re

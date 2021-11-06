@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 16:38:21 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/07/02 10:18:49 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/10/23 18:02:52 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	i = 0;
 	str_src = (unsigned char *)src;
 	str_dst = (unsigned char *)dst;
-	if (dst == '\0' && src == '\0')
+	if (dst == NULL && src == NULL)
 		return (0);
 	if (str_dst > str_src)
 	{
