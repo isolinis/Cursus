@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:56:01 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/06 22:06:57 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/07 18:18:25 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_map_argv(int argc, char **argv)
 
 	i = 1;
 	j = 0;
-	args = (char **) malloc(sizeof(char *) * argc - 1);
+	args = malloc(sizeof(char *) * argc - 1);
 	while (i < argc)
 	{
 		args[j] = ft_strdup(argv[i]);

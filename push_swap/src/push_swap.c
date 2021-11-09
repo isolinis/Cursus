@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 20:34:17 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/06 22:08:55 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:09:43 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,38 @@
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
+// 1. Store arguments in an array 'args' independently on how is the user input
+// 2. Check input is a signed or unsigned digit & convert input from char * to int
+// 3. 
+
 int	main(int argc, char **argv)
 {
 	char	**args;
 	int		i;
-
+	int		argl;
+	
 	args = NULL;
 	if (argc < 2)
-		write(1, "Error", 5);
+	{
+		write(1, "Error\n", 7);
+		exit(0);
+	}
 	else if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else if (argc > 2)
 		args = ft_map_argv(argc, argv);
-	/*
 	i = 0;
-	while (i < argc - 1)
+	while (i < argc -1)
+	{
+		ft_format_check(args[i]);
+		i++;
+	}
+	argl = i;
+	i = 0;
+	while (i < argl)
 	{
 		printf("Input %d: %s\n", i, args[i]);
 		i++;
 	}
-	*/
 	return (0);
 }

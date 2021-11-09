@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_is_signed_digit.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 09:17:50 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/07 13:21:47 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/07 13:46:48 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/07 18:49:13 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_isdigit(int c)
+int	ft_is_signed_digit(char c, char next_c)
 {
-	unsigned char	ui_c;
-
-	ui_c = (unsigned char) c;
-	if (c >= '0' && c <= '9')
+	if ((c == '-' || c == '+') && (next_c >= '0' && next_c <= '9'))
 		return (1);
-	else
-		return (0);
+	return (0);
 }
