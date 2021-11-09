@@ -19,13 +19,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIB_DIR) --silent
-	@gcc $(FLAGS) $(SANITIZE) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
+	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
 	@echo "##### push_swap compiling finished! #####"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "##### Creating" [ $@ ] " #####"
-	@gcc $(FLAGS) $(SANITIZE) -o $@ -c $< $(INC)
+	@gcc $(FLAGS) -o $@ -c $< $(INC)
 
 clean:
 	@make -C $(LIB_DIR) clean  --silent

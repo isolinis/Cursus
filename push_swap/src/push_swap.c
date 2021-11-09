@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 20:34:17 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/07 19:09:43 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/09 16:10:35 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		args = ft_map_argv(argc, argv);
 	i = 0;
-	while (i < argc -1)
+	while (args[i])
 	{
 		ft_format_check(args[i]);
 		i++;
