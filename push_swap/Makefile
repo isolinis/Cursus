@@ -3,8 +3,10 @@ FLAGS = -Wall -Wextra -Werror
 SANITIZE = -fsanitize=address -g3
 INC = -I%.h -I$(LIB_DIR)%.h
 
-SRC_NAME =	push_swap.c		\
-			ft_map_argv.c	\
+SRC_NAME =	push_swap.c				\
+			ft_map_argv.c			\
+			ft_format_check.c		\
+			ft_is_signed_digit.c	\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))

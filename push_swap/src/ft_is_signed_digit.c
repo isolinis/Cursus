@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_argv.c                                      :+:      :+:    :+:   */
+/*   ft_is_signed_digit.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 21:56:01 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/09 16:09:27 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/07 13:46:48 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/07 18:49:13 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "../../Libft/libft.h"
 
-char	**ft_map_argv(int argc, char **argv)
+int	ft_is_signed_digit(char c, char next_c)
 {
-	char	**args;
-	int		i;
-	int		j;
-
-	i = 1;
-	j = 0;
-	args = (char **)malloc(sizeof(char *) * (argc - 1));
-	while (i < argc)
-	{
-		args[j] = ft_strdup(argv[i]);
-		i++;
-		j++;
-	}
-	args[j] = NULL;
-	return (args);
+	if ((c == '-' || c == '+') && (next_c >= '0' && next_c <= '9'))
+		return (1);
+	return (0);
 }
