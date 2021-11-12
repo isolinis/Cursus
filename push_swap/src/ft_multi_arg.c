@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_multi_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 19:02:42 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/12 21:19:33 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/06 21:56:01 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/12 19:06:28 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+#include "../../Libft/libft.h"
 
-t_list	*ft_lstnew(void *content)
+char	**ft_multi_arg(int argc, char **argv)
 {
-	t_list	*res;
+	char	**args;
+	int		i;
+	int		j;
 
-	res = (t_list *) malloc (sizeof(t_list));
-	if (!res)
-		return (NULL);
-	res -> content = content;
-	res -> next = NULL;
-	return (res);
+	i = 1;
+	j = 0;
+	args = (char **)malloc(sizeof(char *) * argc - 1);
+	while (i < argc)
+	{
+		args[j] = ft_strdup(argv[i]);
+		i++;
+		j++;
+	}
+	args[j] = NULL;
+	return (args);
 }

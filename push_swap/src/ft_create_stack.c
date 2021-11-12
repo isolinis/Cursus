@@ -1,36 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_argv.c                                        :+:      :+:    :+:   */
+/*   ft_create_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 20:34:17 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/12 22:04:17 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/12 19:14:56 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/12 22:04:14 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
-char	**ft_map_argv(int argc, char **argv)
+t_list  *ft_create_stack(t_list *stack, char **argv)
 {
-	char	**args;
-	int		i;
-	
-	args = NULL;
-	if (argc < 2)
-		write(1, "Error\n", 7);
-	else if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else if (argc > 2)
-		args = ft_multi_arg(argc, argv);
+	int     i;
+	size_t  nb;
+
 	i = 0;
-	while (args[i])
+	while(argv[i])
 	{
-		ft_format_check(args[i]);
+		nb = (size_t)ft_atoi(argv[i]);
+		ft_lstadd_back(&stack, ft_lstnew((void *)nb));
+		printf("newnode: %d - %i /// ", i, (int)stack->content );
 		i++;
 	}
-	i = 0;
-	return (args);
+	return (stack);
+}
+
+void	ft_print_stack(t_list *stack)
+{
+	t_list	*tmp;
+
+	tmp = stack;
+	printf("\nhead ->");
+	while (tmp)
+	{
+		printf(" %i ->", (int) (tmp -> content));
+		tmp = tmp -> next;
+	}
+	printf(" null\n");
 }

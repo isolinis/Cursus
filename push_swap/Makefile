@@ -5,8 +5,10 @@ INC = -I%.h -I$(LIB_DIR)%.h
 
 SRC_NAME =	push_swap.c				\
 			ft_map_argv.c			\
+			ft_multi_arg.c			\
 			ft_format_check.c		\
 			ft_is_signed_digit.c	\
+			ft_create_stack.c		\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
@@ -19,6 +21,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIB_DIR) --silent
+	@make -C $(LIB_DIR) bonus --silent
 	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
 	@echo "##### push_swap compiling finished! #####"
 
