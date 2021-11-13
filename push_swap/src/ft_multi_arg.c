@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_multi_arg.c                                      :+:      :+:    :+:   */
+/*   ft_multi_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:56:01 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/12 19:06:28 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/13 19:54:28 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_multi_arg(int argc, char **argv)
 
 	i = 1;
 	j = 0;
-	args = (char **)malloc(sizeof(char *) * argc - 1);
+	args = (char **)malloc(sizeof(char *) * argc);
 	while (i < argc)
 	{
 		args[j] = ft_strdup(argv[i]);

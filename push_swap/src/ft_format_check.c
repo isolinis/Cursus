@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:15:00 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/07 18:05:28 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/13 19:44:26 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	ft_format_check(char *arg)
 {
 	int	i;
- 
+
 	i = 0;
 	while (arg[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 19:14:56 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/12 22:04:14 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/13 21:19:55 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,48 @@
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
-t_list  *ft_create_stack(t_list *stack, char **argv)
+t_list	*ft_create_stack(t_list *stack, char **argv)
 {
-	int     i;
-	size_t  nb;
+	int		i;
+	size_t	num;
 
 	i = 0;
-	while(argv[i])
+	while (argv[i])
 	{
-		nb = (size_t)ft_atoi(argv[i]);
-		ft_lstadd_back(&stack, ft_lstnew((void *)nb));
-		printf("newnode: %d - %i /// ", i, (int)stack->content );
+		num = (size_t)ft_atoi(argv[i]);
+		ft_lstadd_back(&stack, ft_lstnew((void *)num));
 		i++;
 	}
 	return (stack);
 }
 
+void	ft_isdupe(t_list *stack)
+{
+	t_list	*next;
+
+	while (stack)
+	{
+		next = stack -> next;
+		while (next)
+		{
+			if (next -> content == stack -> content)
+			{
+				write(1, "Error\n", 7);
+				exit(0);
+			}
+			next = next -> next;
+		}
+		stack = stack -> next;
+	}
+}
+
 void	ft_print_stack(t_list *stack)
 {
-	t_list	*tmp;
-
-	tmp = stack;
 	printf("\nhead ->");
-	while (tmp)
+	while (stack)
 	{
-		printf(" %i ->", (int) (tmp -> content));
-		tmp = tmp -> next;
+		printf(" %i ->", (int)(stack -> content));
+		stack = stack -> next;
 	}
 	printf(" null\n");
 }

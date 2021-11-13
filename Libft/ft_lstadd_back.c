@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 10:33:44 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/12 22:04:21 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/13 18:56:56 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	**tmp;
+	t_list	*head;
 
-	tmp = lst;
 	if (*lst)
 	{
-		while ((*tmp)-> next != NULL)
+		head = (*lst);
+		while ((*lst)-> next != NULL)
 		{
-			(*tmp) = (*tmp)-> next;
+			(*lst) = (*lst)-> next;
 		}
-		(*tmp)-> next = new;
+		(*lst)-> next = new;
+		(*lst) = head;
 	}
 	else
 	{
