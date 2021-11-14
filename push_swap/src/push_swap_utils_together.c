@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_check.c                                  :+:      :+:    :+:   */
+/*   push_swap_utils_together.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 13:15:00 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/13 19:44:26 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/14 01:38:04 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/14 02:02:18 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
-void	ft_format_check(char *arg)
+void	ft_swap_stack_inc(t_list **stack_a, t_list **stack_b)
 {
-	int	i;
+	ft_swap_stack(stack_a);
+	ft_swap_stack(stack_b);
+}
 
-	i = 0;
-	while (arg[i])
-	{
-		if (!ft_isdigit(arg[i]))
-		{
-			if (!ft_is_signed_digit(arg[i], arg[i + 1]))
-			{
-				write(1, "Error\n", 7);
-				exit(0);
-			}
-		}
-		i++;
-	}
+void	ft_rotate_stack_inc(t_list **stack_a, t_list **stack_b)
+{
+	ft_rotate_stack(stack_a);
+	ft_rotate_stack(stack_b);
+}
+
+void	ft_reverse_rotate_inc(t_list **stack_a, t_list **stack_b)
+{
+	ft_reverse_rotate(stack_a);
+	ft_reverse_rotate(stack_b);
 }

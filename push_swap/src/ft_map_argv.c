@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 21:56:01 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/09 16:09:27 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/10/16 20:34:17 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/13 19:50:30 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@ char	**ft_map_argv(int argc, char **argv)
 {
 	char	**args;
 	int		i;
-	int		j;
 
-	i = 1;
-	j = 0;
-	args = (char **)malloc(sizeof(char *) * (argc - 1));
-	while (i < argc)
+	args = NULL;
+	if (argc < 2)
+		write(1, "Error\n", 7);
+	else if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else if (argc > 2)
+		args = ft_multi_arg(argc, argv);
+	i = 0;
+	while (args[i])
 	{
-		args[j] = ft_strdup(argv[i]);
+		ft_format_check(args[i]);
 		i++;
-		j++;
 	}
-	args[j] = NULL;
+	i = 0;
 	return (args);
 }

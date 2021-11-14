@@ -3,10 +3,14 @@ FLAGS = -Wall -Wextra -Werror
 SANITIZE = -fsanitize=address -g3
 INC = -I%.h -I$(LIB_DIR)%.h
 
-SRC_NAME =	push_swap.c				\
-			ft_map_argv.c			\
-			ft_format_check.c		\
-			ft_is_signed_digit.c	\
+SRC_NAME =	push_swap.c					\
+			ft_map_argv.c				\
+			ft_multi_arg.c				\
+			ft_format_check.c			\
+			ft_is_signed_digit.c		\
+			ft_create_stack.c			\
+			push_swap_utils.c			\
+			push_swap_utils_together.c	\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
@@ -19,13 +23,14 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIB_DIR) --silent
-	@gcc $(FLAGS) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
+	@make -C $(LIB_DIR) bonus --silent
+	@gcc $(FLAGS) $(SANITIZE) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
 	@echo "##### push_swap compiling finished! #####"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "##### Creating" [ $@ ] " #####"
-	@gcc $(FLAGS) -o $@ -c $< $(INC)
+	@gcc $(FLAGS) $(SANITIZE) -o $@ -c $< $(INC)
 
 clean:
 	@make -C $(LIB_DIR) clean  --silent
