@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   push_swap_utils_together.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/26 21:10:24 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/14 00:27:38 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/14 01:38:04 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/14 02:02:18 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+#include "../../Libft/libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_swap_stack_inc(t_list **stack_a, t_list **stack_b)
 {
-	if (lst)
-	{
-		while (lst -> next != NULL)
-			lst = lst -> next;
-	}
-	return (lst);
+	ft_swap_stack(stack_a);
+	ft_swap_stack(stack_b);
+}
+
+void	ft_rotate_stack_inc(t_list **stack_a, t_list **stack_b)
+{
+	ft_rotate_stack(stack_a);
+	ft_rotate_stack(stack_b);
+}
+
+void	ft_reverse_rotate_inc(t_list **stack_a, t_list **stack_b)
+{
+	ft_reverse_rotate(stack_a);
+	ft_reverse_rotate(stack_b);
 }
