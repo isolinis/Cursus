@@ -54,7 +54,7 @@ void	ft_print_stack(t_list *stack)
 	printf("\nhead ->");
 	while (stack)
 	{
-		printf(" %i ->", (int)(stack -> content));
+		printf(" %d ->", (int)(stack -> content));
 		stack = stack -> next;
 	}
 	printf(" null\n");

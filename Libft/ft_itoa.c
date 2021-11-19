@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int static	ft_get_decimals(long n)
+static int	ft_get_decimals(long n)
 {
 	int	d;
 
@@ -27,7 +27,7 @@ int static	ft_get_decimals(long n)
 	return (d);
 }
 
-int static	ft_is_negative(char *s, long n)
+static int	ft_is_negative(char *s, long n)
 {
 	if (n < 0)
 	{

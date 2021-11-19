@@ -31,6 +31,5 @@ char	**ft_map_argv(int argc, char **argv)
 		ft_format_check(args[i]);
 		i++;
 	}
-	i = 0;
 	return (args);
 }

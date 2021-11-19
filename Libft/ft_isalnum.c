@@ -14,9 +14,6 @@
 
 int	ft_isalnum(int c)
 {
-	unsigned char	ui_c;
-
-	ui_c = (unsigned char) c;
 	if (ft_isalpha(c))
 		return (1);
 	else if (ft_isdigit(c))

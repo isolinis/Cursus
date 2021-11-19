@@ -1,6 +1,7 @@
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -Wno-pointer-to-int-cast -Wno-unused-result -Wno-return-local-addr
 SANITIZE = -fsanitize=address -g3
+VALGRIND = -g -Og -std=gnu99
 INC = -I%.h -I$(LIB_DIR)%.h
 
 SRC_NAME =	push_swap.c					\
@@ -24,13 +25,13 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C $(LIB_DIR) --silent
 	@make -C $(LIB_DIR) bonus --silent
-	@gcc $(FLAGS) $(SANITIZE) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
+	@gcc $(FLAGS) $(VALGRIND) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
 	@echo "##### push_swap compiling finished! #####"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "##### Creating" [ $@ ] " #####"
-	@gcc $(FLAGS) $(SANITIZE) -o $@ -c $< $(INC)
+	@gcc $(FLAGS) $(VALGRIND) -o $@ -c $< $(INC)
 
 clean:
 	@make -C $(LIB_DIR) clean  --silent

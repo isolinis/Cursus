@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	static	ft_isspace(int c)
+static int	ft_isspace(int c)
 {
 	unsigned char	c_c;
 
@@ -23,14 +23,14 @@ int	static	ft_isspace(int c)
 	return (0);
 }
 
-int static	ft_isneg(char c)
+static int	ft_isneg(char c)
 {
 	if (c == '+')
 		return (1);
 	return (-1);
 }
 
-int	static	ft_convert(char *s, int i, int sign, int num)
+static int	ft_convert(char *s, int i, int sign, int num)
 {
 	while (s[i] != '\0')
 	{

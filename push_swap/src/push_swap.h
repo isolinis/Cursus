@@ -17,7 +17,7 @@
 char	**ft_map_argv(int argc, char **argv);
 char	**ft_multi_arg(int argc, char **argv);
 void	ft_format_check(char *arg);
-int		ft_is_signed_digit(char c, char next_c);
+int	ft_is_signed_digit(char c, char next_c);
 t_list	*ft_create_stack(t_list *stack, char **argv);
 void	ft_print_stack(t_list *stack);
 void	ft_isdupe(t_list *stack);

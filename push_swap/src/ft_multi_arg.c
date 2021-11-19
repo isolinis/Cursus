@@ -24,7 +24,7 @@ char	**ft_multi_arg(int argc, char **argv)
 	args = (char **)malloc(sizeof(char *) * argc);
 	while (i < argc)
 	{
-		args[j] = ft_strdup(argv[i]);
+		args[j] = argv[i];
 		i++;
 		j++;
 	}
