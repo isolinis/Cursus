@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:05:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/14 01:56:03 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:15:39 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_push_stack(t_list **stack_src, t_list **stack_dst)
 		{
 			aux_dst = aux;
 			aux_dst -> next = NULL;
-			*stack_dst = aux_dst;	
+			*stack_dst = aux_dst;
 		}
 		else
 		{

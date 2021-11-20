@@ -6,10 +6,11 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:52:55 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/14 02:02:13 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:15:33 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
@@ -21,10 +22,14 @@
 // content.
 // 4. Check for duplicate numbers.
 // 5. Code Push_swap language functions.
+// 6. Check that list is / is not ordered.
+// 7. Order a list of up to 3 components.
+// 8. Order a list of up to 5 components.
 
 int	main(int argc, char **argv)
 {
 	char	**args;
+	int		size;
 	t_list	*stack_a;
 	t_list	*stack_b;
 
@@ -33,10 +38,10 @@ int	main(int argc, char **argv)
 	args = ft_map_argv(argc, argv);
 	stack_a = ft_create_stack(stack_a, args);
 	ft_isdupe(stack_a);
+	size = ft_get_argsize(args);
 	free(args);
-	ft_swap_stack(&stack_a);
-	ft_push_stack(&stack_a, &stack_b);
-	ft_print_stack(stack_a);
-	ft_print_stack(stack_b);
+	if (ft_is_ordered(stack_a))
+		exit(0);
+	ft_sort_list(&stack_a, &stack_b, size);
 	return (0);
 }

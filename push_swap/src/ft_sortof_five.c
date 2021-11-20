@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_together.c                         :+:      :+:    :+:   */
+/*   ft_sortof_five.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 01:38:04 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/20 14:00:38 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/20 17:11:51 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/20 20:15:29 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
-void	ft_swap_stack_inc(t_list **stack_a, t_list **stack_b)
+void ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 {
-	ft_swap_stack(stack_a);
-	ft_swap_stack(stack_b);
-}
+	t_list	*aux;
 
-void	ft_rotate_stack_inc(t_list **stack_a, t_list **stack_b)
-{
-	ft_rotate_stack(stack_a);
-	ft_rotate_stack(stack_b);
-}
-
-void	ft_reverse_rotate_inc(t_list **stack_a, t_list **stack_b)
-{
-	ft_reverse_rotate(stack_a);
-	ft_reverse_rotate(stack_b);
+	aux = *stack_src;
+	ft_print_stack(aux);
+	ft_print_stack(*stack_src);
+	ft_print_stack(*stack_dst);
+	printf("\n%d", size);
 }
