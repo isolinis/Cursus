@@ -6,10 +6,11 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:05:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/20 20:15:39 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/21 19:33:29 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
@@ -20,6 +21,15 @@ void	ft_swap(int *a, int *b)
 	c = *a;
 	*a = *b;
 	*b = c;
+}
+t_list	*ft_bfr_lstlast(t_list *stack)
+{
+	if (stack)
+	{
+		while (stack -> next -> next != NULL)
+			stack = stack -> next;
+	}
+	return (stack);
 }
 
 void	ft_swap_stack(t_list **stack)
@@ -38,7 +48,7 @@ void	ft_rotate_stack(t_list **stack)
 
 	head = *stack;
 	tail = ft_lstlast(*stack);
-	if (head && head -> next)
+	if (head && tail)
 		ft_swap((int *)(&(head -> content)), (int *)(&(tail -> content)));
 }
 
@@ -69,13 +79,17 @@ void	ft_push_stack(t_list **stack_src, t_list **stack_dst)
 	}
 }
 
-void	ft_reverse_rotate(t_list **stack)
+t_list	*ft_reverse_rotate(t_list *stack)
 {
 	t_list	*head;
 	t_list	*tail;
+	t_list	*new_tail;
 
-	head = *stack;
-	tail = ft_lstlast(*stack);
-	if (head && head -> next)
-		ft_swap((int *)(&(tail -> content)), (int *)(&(head -> content)));
+	head = stack;
+	tail = ft_lstlast(stack);
+	new_tail = ft_bfr_lstlast(stack);
+	new_tail -> next = NULL;
+	tail -> next = (stack);
+	stack = tail;
+	return (stack);
 }

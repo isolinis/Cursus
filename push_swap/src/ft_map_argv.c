@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 20:34:17 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/19 17:59:24 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:49:36 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ char	**ft_map_argv(int argc, char **argv)
 
 	args = NULL;
 	if (argc < 2)
+	{
 		write(1, "Error\n", 7);
+		exit(0);
+	}
 	else if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else if (argc > 2)
