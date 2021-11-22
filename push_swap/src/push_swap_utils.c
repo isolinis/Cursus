@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:05:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/21 19:33:29 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:36:11 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_swap(int *a, int *b)
 	*a = *b;
 	*b = c;
 }
+
 t_list	*ft_bfr_lstlast(t_list *stack)
 {
 	if (stack)
@@ -30,26 +31,6 @@ t_list	*ft_bfr_lstlast(t_list *stack)
 			stack = stack -> next;
 	}
 	return (stack);
-}
-
-void	ft_swap_stack(t_list **stack)
-{
-	t_list	*head;
-
-	head = *stack;
-	if (head && head -> next)
-		ft_swap((int *)(&(head -> content)), (int *)(&(head -> next -> content)));
-}
-
-void	ft_rotate_stack(t_list **stack)
-{
-	t_list	*head;
-	t_list	*tail;
-
-	head = *stack;
-	tail = ft_lstlast(*stack);
-	if (head && tail)
-		ft_swap((int *)(&(head -> content)), (int *)(&(tail -> content)));
 }
 
 void	ft_push_stack(t_list **stack_src, t_list **stack_dst)
@@ -79,17 +60,39 @@ void	ft_push_stack(t_list **stack_src, t_list **stack_dst)
 	}
 }
 
+t_list	*ft_rotate_stack(t_list *stack)
+{
+	t_list	*tail;
+	t_list	*head;
+
+	head = ft_lstlast(stack);
+	tail = ft_bfr_lstlast(stack);
+	tail -> next = NULL;
+	head -> next = stack;
+	stack = head;
+	return (stack);
+}
+
 t_list	*ft_reverse_rotate(t_list *stack)
 {
 	t_list	*head;
+	t_list	*next;
 	t_list	*tail;
-	t_list	*new_tail;
 
-	head = stack;
-	tail = ft_lstlast(stack);
-	new_tail = ft_bfr_lstlast(stack);
-	new_tail -> next = NULL;
-	tail -> next = (stack);
-	stack = tail;
+	head = ft_lstlast(stack);
+	next = stack;
+	tail = ft_bfr_lstlast(next);
+	tail -> next = NULL;
+	head -> next = next;
+	stack = head;
 	return (stack);
+}
+
+void	ft_swap_stack(t_list **stack)
+{
+	t_list	*head;
+
+	head = *stack;
+	if (head && head -> next)
+		ft_swap((int *)(&(head -> content)), (int *)(&(head -> next -> content)));
 }

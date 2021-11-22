@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:07:02 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/21 18:45:54 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:36:20 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@
 void	ft_case_one(t_list **stack)
 {
 	ft_case_extra(stack);
-	ft_rotate_stack(stack);
+	*stack = ft_rotate_stack(*stack);
 	write (1, "ra\n", 4);
 }
 
 void	ft_case_two(t_list **stack)
 {
-	ft_rotate_stack(stack);
+	*stack = ft_rotate_stack(*stack);
 	write (1, "ra\n", 4);
 	ft_case_extra(stack);
 }
 
 void	ft_case_three(t_list **stack)
 {
-	ft_rotate_stack(stack);
+	*stack = ft_rotate_stack(*stack);
 	write (1, "ra\n", 4);
 }
 

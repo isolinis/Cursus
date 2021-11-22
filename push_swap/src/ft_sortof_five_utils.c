@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 16:28:07 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/21 19:33:26 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:36:24 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_case_double_rra(t_list **stack)
 
 void	ft_case_double_ra(t_list **stack)
 {
-	ft_rotate_stack(stack);
+	*stack = ft_rotate_stack(*stack);
 	write (1, "ra\n", 5);
-	ft_rotate_stack(stack);
+	*stack = ft_rotate_stack(*stack);
 	write (1, "ra\n", 5);
 }

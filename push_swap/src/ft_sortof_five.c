@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:11:51 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/21 19:33:14 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:36:06 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void ft_push_til_three(t_list **stack, int iteration, int size)
 	}
 	if (iteration == 4)
 		ft_case_three(stack);
-	ft_print_stack(*stack);
 }
 
 void ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
@@ -78,13 +77,12 @@ void ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 		min = ft_find_min(aux, min);
 		iteration = ft_find_pos(aux, iteration, min);
 		ft_push_til_three(stack_src, iteration, size);
-	//	ft_push_stack(stack_src, stack_dst);
-		write(1, "pa\n", 4);
+		ft_push_stack(stack_src, stack_dst);
+		write(1, "pb\n", 4);
 		size--;
 	}
 //	printf("\n%d", size);
 //	printf("\n%d", min);
 //	printf("\n%d", iteration);
-	ft_print_stack(*stack_src);
 	ft_print_stack(*stack_dst);
 }
