@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:11:51 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/22 20:56:49 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:53:49 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_find_min(t_list *aux, int min)
 	return (min);
 }
 
-int ft_find_pos(t_list *aux, int iteration, int min)
+int	ft_find_pos(t_list *aux, int iteration, int min)
 {
 	t_list	*ref;
 
@@ -38,7 +38,7 @@ int ft_find_pos(t_list *aux, int iteration, int min)
 	while (aux)
 	{
 		if ((int)(aux -> content) == min)
-			break;
+			break ;
 		aux = aux -> next;
 		iteration++;
 	}
@@ -46,26 +46,24 @@ int ft_find_pos(t_list *aux, int iteration, int min)
 	return (iteration);
 }
 
-void ft_push_til_three(t_list **stack, int iteration, int size)
+void	ft_push_til_three(t_list **stack, int iteration, int size)
 {
 	if (iteration == 1)
-		ft_case_extra(stack);
+		ft_case_sa(stack);
 	if (iteration == 2)
 		ft_case_double_rra(stack);
 	if (iteration == 3)
 	{
 		if (size == 4)
-			ft_case_three(stack);
+			ft_case_ra(stack);
 		else
 			ft_case_double_ra(stack);
 	}
 	if (iteration == 4)
-		ft_case_three(stack);
+		ft_case_ra(stack);
 }
 
-
-
-void ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
+void	ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 {
 	t_list	*aux;
 	int		iteration;
@@ -74,7 +72,7 @@ void ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 	aux = *stack_src;
 	while (size > 3)
 	{
-		min = (int)(*stack_src) -> content;
+		min = (int)(*stack_src)-> content;
 		min = ft_find_min(aux, min);
 		iteration = 0;
 		iteration = ft_find_pos(aux, iteration, min);

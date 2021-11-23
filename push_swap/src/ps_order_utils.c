@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:54:03 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/22 21:06:11 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:53:41 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	ft_get_argsize(char **args)
 
 void	ft_sort_list(t_list **stack_a, t_list **stack_b, int size)
 {
-	//ft_print_stack(*stack_a);
-	//ft_print_stack(*stack_b);
+	ft_print_stack(*stack_a);
+	ft_print_stack(*stack_b);
 	if (size == 2)
-		ft_case_extra(stack_a);
+		ft_case_sa(stack_a);
 	if (size == 3)
 		ft_sortof_three(stack_a);
 	if ((size <= 5) && (size > 3))
 		ft_sortof_five(stack_a, stack_b, size);
-	//ft_print_stack(*stack_a);
-	//ft_print_stack(*stack_b);
+	ft_print_stack(*stack_a);
+	ft_print_stack(*stack_b);
 }

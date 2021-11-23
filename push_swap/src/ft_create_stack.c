@@ -6,13 +6,27 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 19:14:56 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/19 19:06:16 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/23 19:56:36 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
+
+void	ft_free_stack(t_list **stack)
+{
+	t_list	*tmp;
+
+	if (!stack)
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack);
+		(*stack) = (*stack)-> next;
+		free(tmp);
+	}
+}
 
 t_list	*ft_create_stack(t_list *stack, char **argv)
 {

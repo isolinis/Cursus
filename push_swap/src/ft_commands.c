@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_commands.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 12:40:54 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/23 19:18:46 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/11/23 19:37:42 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/23 20:53:46 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+#include "../../Libft/libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_case_sa(t_list **stack)
 {
-	t_list	*tmp;
+	(*stack) = ft_swap_stack(*stack);
+	write (1, "sa\n", 4);
+}
 
-	if (!lst && !del)
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)-> next;
-		ft_lstdelone((*lst), del);
-		(*lst) = tmp;
-	}
+void	ft_case_rra(t_list **stack)
+{
+	(*stack) = ft_reverse_rotate(*stack);
+	write (1, "rra\n", 5);
+}
+
+void	ft_case_ra(t_list **stack)
+{
+	*stack = ft_rotate_stack(*stack);
+	write (1, "ra\n", 4);
 }

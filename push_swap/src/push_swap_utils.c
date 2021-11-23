@@ -6,22 +6,13 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:05:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/22 20:36:11 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/23 20:34:10 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
-
-void	ft_swap(int *a, int *b)
-{
-	int	c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
-}
 
 t_list	*ft_bfr_lstlast(t_list *stack)
 {
@@ -88,11 +79,16 @@ t_list	*ft_reverse_rotate(t_list *stack)
 	return (stack);
 }
 
-void	ft_swap_stack(t_list **stack)
+t_list	*ft_swap_stack(t_list *stack)
 {
-	t_list	*head;
+	t_list	*aux;
 
-	head = *stack;
-	if (head && head -> next)
-		ft_swap((int *)(&(head -> content)), (int *)(&(head -> next -> content)));
+	if (stack && stack -> next != NULL)
+	{
+		aux = stack -> next;
+		stack -> next = aux -> next;
+		aux -> next = stack;
+		stack = aux;
+	}
+	return (stack);
 }
