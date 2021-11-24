@@ -16,17 +16,17 @@
 void	ft_case_sa(t_list **stack)
 {
 	(*stack) = ft_swap_stack(*stack);
-	write (1, "sa\n", 4);
-}
-
-void	ft_case_rra(t_list **stack)
-{
-	(*stack) = ft_reverse_rotate(*stack);
-	write (1, "rra\n", 5);
+	write (1, "sa\n", 3);
 }
 
 void	ft_case_ra(t_list **stack)
 {
-	*stack = ft_rotate_stack(*stack);
-	write (1, "ra\n", 4);
+	(*stack) = ft_rotate_stack(*stack);
+	write (1, "ra\n", 3);
+}
+
+void	ft_case_rra(t_list **stack)
+{
+	*stack = ft_reverse_rotate(*stack);
+	write (1, "rra\n", 4);
 }

@@ -20,10 +20,10 @@ void	ft_case_one(t_list **stack)
 	ft_case_rra(stack);
 }
 
-void	ft_case_sa_ra(t_list **stack)
+void	ft_case_sa_rra(t_list **stack)
 {
 	ft_case_sa(stack);
-	ft_case_ra(stack);
+	ft_case_rra(stack);
 }
 
 void	ft_sortof_three(t_list **stack)
@@ -36,7 +36,7 @@ void	ft_sortof_three(t_list **stack)
 	second = (int)((*stack)-> next -> content);
 	third = (int)((*stack)-> next -> next -> content);
 	if ((first > second) && (second > third) && (first > third))
-		ft_case_sa_ra(stack);
+		ft_case_sa_rra(stack);
 	else if ((first > second) && (second < third) && (first > third))
 	{
 		ft_case_rra(stack);

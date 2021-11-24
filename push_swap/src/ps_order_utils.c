@@ -19,7 +19,7 @@ int	ft_is_ordered(t_list *stack)
 	t_list	*current;
 	int		i;
 
-	i = 0;
+	i = 1;
 	current = stack -> next;
 	while (current)
 	{

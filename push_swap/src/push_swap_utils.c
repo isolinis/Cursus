@@ -51,7 +51,7 @@ void	ft_push_stack(t_list **stack_src, t_list **stack_dst)
 	}
 }
 
-t_list	*ft_rotate_stack(t_list *stack)
+t_list	*ft_reverse_rotate(t_list *stack)
 {
 	t_list	*tail;
 	t_list	*head;
@@ -64,7 +64,7 @@ t_list	*ft_rotate_stack(t_list *stack)
 	return (stack);
 }
 
-t_list	*ft_reverse_rotate(t_list *stack)
+t_list	*ft_rotate_stack(t_list *stack)
 {
 	t_list	*head;
 	t_list	*next;

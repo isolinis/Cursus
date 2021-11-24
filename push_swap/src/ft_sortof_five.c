@@ -46,21 +46,26 @@ int	ft_find_pos(t_list *aux, int iteration, int min)
 	return (iteration);
 }
 
-void	ft_push_til_three(t_list **stack, int iteration, int size)
+void	ft_push_til_three(t_list **stack_src, t_list **stack_dst, int iteration, int size)
 {
+	if (iteration == 0)
+	{
+		ft_push_stack(stack_src, stack_dst);
+		write(1, "pb\n", 3);
+	}
 	if (iteration == 1)
-		ft_case_sa(stack);
+		ft_case_sa(stack_src);
 	if (iteration == 2)
-		ft_case_double_rra(stack);
+		ft_case_double_ra(stack_src);
 	if (iteration == 3)
 	{
 		if (size == 4)
-			ft_case_ra(stack);
+			ft_case_rra(stack_src);
 		else
-			ft_case_double_ra(stack);
+			ft_case_double_rra(stack_src);
 	}
 	if (iteration == 4)
-		ft_case_ra(stack);
+		ft_case_rra(stack_src);
 }
 
 void	ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
@@ -76,15 +81,15 @@ void	ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 		min = ft_find_min(aux, min);
 		iteration = 0;
 		iteration = ft_find_pos(aux, iteration, min);
-		ft_push_til_three(stack_src, iteration, size);
+		ft_push_til_three(stack_src, stack_dst, iteration, size);
 		ft_push_stack(stack_src, stack_dst);
-		write(1, "pb\n", 4);
+		write(1, "pb\n", 3);
 		size--;
 	}
 	ft_sortof_three(stack_src);
 	while (*stack_dst)
 	{
 		ft_push_stack(stack_dst, stack_src);
-		write(1, "pa\n", 4);
+		write(1, "pa\n", 3);
 	}
 }
