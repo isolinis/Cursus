@@ -74,9 +74,9 @@ void	ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 	int		iteration;
 	int		min;
 
-	aux = *stack_src;
 	while (size > 3)
 	{
+		aux = *stack_src;
 		min = (int)(*stack_src)-> content;
 		min = ft_find_min(aux, min);
 		iteration = 0;
