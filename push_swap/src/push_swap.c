@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:52:55 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/23 20:53:38 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:42:25 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int argc, char **argv)
 	if (ft_is_ordered(stack_a))
 		exit(0);
 	ft_sort_list(&stack_a, &stack_b, size);
-	ft_free_stack(&stack_a);
-	ft_free_stack(&stack_b);
+//	ft_free_stack(&stack_a);
+//	ft_free_stack(&stack_b);
 //	system("leaks push_swap");
 	return (0);
 }

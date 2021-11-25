@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:11:51 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/23 20:53:49 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/25 14:02:10 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,21 @@ int	ft_find_pos(t_list *aux, int iteration, int min)
 	return (iteration);
 }
 
-void	ft_push_til_three(t_list **stack_src, t_list **stack_dst, int iteration, int size)
+void	ft_push_til_three(t_list **stack_src, int iteration, int size)
 {
-	if (iteration == 0)
-	{
-		ft_push_stack(stack_src, stack_dst);
-		write(1, "pb\n", 3);
-	}
 	if (iteration == 1)
-		ft_case_sa(stack_src);
+		ft_case_ra(stack_src);
 	if (iteration == 2)
-		ft_case_double_ra(stack_src);
+	{
+		ft_case_ra(stack_src);
+		ft_case_ra(stack_src);
+	}
 	if (iteration == 3)
 	{
 		if (size == 4)
 			ft_case_rra(stack_src);
 		else
-			ft_case_double_rra(stack_src);
+			ft_double_rra(stack_src);
 	}
 	if (iteration == 4)
 		ft_case_rra(stack_src);
@@ -74,14 +72,14 @@ void	ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 	int		iteration;
 	int		min;
 
-	while (size > 3)
+	while (size != 3)
 	{
 		aux = *stack_src;
-		min = (int)(*stack_src)-> content;
+		min = (int)(aux)-> content;
 		min = ft_find_min(aux, min);
 		iteration = 0;
 		iteration = ft_find_pos(aux, iteration, min);
-		ft_push_til_three(stack_src, stack_dst, iteration, size);
+		ft_push_til_three(stack_src, iteration, size);
 		ft_push_stack(stack_src, stack_dst);
 		write(1, "pb\n", 3);
 		size--;

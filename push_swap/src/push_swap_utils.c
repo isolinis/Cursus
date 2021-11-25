@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:05:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/23 20:34:10 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:28:48 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_push_stack(t_list **stack_src, t_list **stack_dst)
 	}
 }
 
-t_list	*ft_reverse_rotate(t_list *stack)
+t_list	*ft_rotate_stack(t_list *stack)
 {
 	t_list	*tail;
 	t_list	*head;
@@ -64,7 +64,7 @@ t_list	*ft_reverse_rotate(t_list *stack)
 	return (stack);
 }
 
-t_list	*ft_rotate_stack(t_list *stack)
+t_list	*ft_reverse_rotate(t_list *stack)
 {
 	t_list	*head;
 	t_list	*next;
