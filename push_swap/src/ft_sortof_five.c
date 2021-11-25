@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:11:51 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/25 14:02:10 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:12:32 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_find_pos(t_list *aux, int iteration, int min)
 void	ft_push_til_three(t_list **stack_src, int iteration, int size)
 {
 	if (iteration == 1)
-		ft_case_ra(stack_src);
+		ft_case_sa(stack_src);
 	if (iteration == 2)
 	{
 		ft_case_ra(stack_src);
@@ -75,7 +75,7 @@ void	ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size)
 	while (size != 3)
 	{
 		aux = *stack_src;
-		min = (int)(aux)-> content;
+		min = (int)(*stack_src)-> content;
 		min = ft_find_min(aux, min);
 		iteration = 0;
 		iteration = ft_find_pos(aux, iteration, min);

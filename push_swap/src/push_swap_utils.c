@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:05:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/25 13:28:48 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:12:20 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,23 @@ void	ft_push_stack(t_list **stack_src, t_list **stack_dst)
 
 t_list	*ft_rotate_stack(t_list *stack)
 {
-	t_list	*tail;
-	t_list	*head;
+	t_list	*tmp_first;
+	t_list	*tmp_last;
+	t_list	*aux;
 
-	head = ft_lstlast(stack);
-	tail = ft_bfr_lstlast(stack);
-	tail -> next = NULL;
-	head -> next = stack;
-	stack = head;
+	aux = stack;
+	if (!(aux && aux->next))
+		return (NULL);
+	tmp_first = aux;
+	aux = aux -> next;
+	tmp_last = aux;
+	while (tmp_last->next)
+	{
+		tmp_last = tmp_last->next;
+	}
+	tmp_last -> next = tmp_first;
+	tmp_first -> next = NULL;
+	stack = aux;
 	return (stack);
 }
 

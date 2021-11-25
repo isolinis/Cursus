@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:07:02 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/25 14:00:01 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/25 18:12:14 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	ft_sortof_three(t_list **stack)
 	first = (int)((*stack)-> content);
 	second = (int)((*stack)-> next -> content);
 	third = (int)((*stack)-> next -> next -> content);
-	if ((first > second) && (second > third) && (first > third))
+	if ((first < second) && (second < third) && (first < third))
+		second = first;
+	else if ((first > second) && (second > third) && (first > third))
 	{
 		ft_case_sa(stack);
 		ft_case_rra(stack);
