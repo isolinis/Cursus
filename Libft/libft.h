@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 19:07:31 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/22 18:15:34 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:17:41 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
+	int				pos;
+	int				checked;
 }	t_list;
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);

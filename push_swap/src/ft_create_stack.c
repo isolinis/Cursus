@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 19:14:56 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/25 13:24:59 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/26 16:27:00 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_print_stack(t_list *stack)
 	printf("\nhead ->");
 	while (stack)
 	{
-		printf(" %d ->", (int)(stack -> content));
+		printf(" %d, pos: %d, checked: %d ->", (int)(stack -> content), stack -> pos, stack -> checked);
 		stack = stack -> next;
 	}
 	printf(" null\n");

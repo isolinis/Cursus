@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 11:25:40 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/25 18:03:35 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/26 19:53:05 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,17 @@ int		ft_is_ordered(t_list *stack);
 void	ft_sort_list(t_list **stack_a, t_list **stack_b, int size);
 void	ft_sortof_three(t_list **stack);
 void	ft_sortof_five(t_list **stack_src, t_list **stack_dst, int size);
+void	ft_sort_big(t_list **stack_src, t_list **stack_dst, int size);
 void	ft_case_ra(t_list **stack);
 void	ft_case_sa(t_list **stack);
 void	ft_case_rra(t_list **stack);
 void	ft_double_rra(t_list **stack);
 int		ft_find_min(t_list *aux, int min);
+int		ft_find_min_unchecked(t_list *aux, int min);
+void	ft_update_pos(t_list *aux, int min, int count);
 int		ft_find_pos(t_list *aux, int iteration, int min);
 void	ft_push_til_three(t_list **stack_src, int iteration, int size);
 t_list	*ft_bfr_lstlast(t_list *stack);
+void	ft_radix_sort(t_list **stack_src, t_list **stack_dst, int size);
 
 #endif
