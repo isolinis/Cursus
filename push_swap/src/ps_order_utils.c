@@ -6,11 +6,10 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:54:03 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/26 19:53:19 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:13:06 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 

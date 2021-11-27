@@ -6,11 +6,10 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:52:55 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/25 18:44:37 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:44:36 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
@@ -25,6 +24,7 @@
 // 6. Check that list is / is not ordered.
 // 7. Order a list of up to 3 components.
 // 8. Order a list of up to 5 components.
+// 9. Order a list of more than 5 components.
 
 int	main(int argc, char **argv)
 {
@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
+	if (argc == 1)
+		exit(0);
 	args = ft_map_argv(argc, argv);
 	stack_a = ft_create_stack(stack_a, args);
 	ft_isdupe(stack_a);

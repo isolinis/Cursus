@@ -6,11 +6,10 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:55:27 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/26 20:46:39 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:22:05 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../../Libft/libft.h"
 #include "push_swap.h"
 
@@ -62,20 +61,23 @@ void	ft_update_pos(t_list *aux, int min, int count)
 void	ft_sort_big(t_list **stack_src, t_list **stack_dst, int size)
 {
 	t_list	*aux;
-	int 	min;
+	int		min;
 	int		count;
+	int		ref;
 
-	count = 1;
+	ref = size;
+	count = 0;
 	aux = *stack_src;
 	ft_fill_stack(aux);
 	while (size != 0)
 	{
 		aux = *stack_src;
-		min = 2147483647; 
-   		min = ft_find_min_unchecked(aux, min);
+		min = 2147483647;
+		min = ft_find_min_unchecked(aux, min);
 		ft_update_pos(aux, min, count);
 		count++;
 		size--;
 	}
+	size = ref;
 	ft_radix_sort(stack_src, stack_dst, size);
 }

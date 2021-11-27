@@ -6,11 +6,10 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 19:14:56 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/26 16:27:00 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:19:56 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
@@ -61,15 +60,4 @@ void	ft_isdupe(t_list *stack)
 		}
 		stack = stack -> next;
 	}
-}
-
-void	ft_print_stack(t_list *stack)
-{
-	printf("\nhead ->");
-	while (stack)
-	{
-		printf(" %d, pos: %d, checked: %d ->", (int)(stack -> content), stack -> pos, stack -> checked);
-		stack = stack -> next;
-	}
-	printf(" null\n");
 }

@@ -6,12 +6,11 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 17:11:51 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/26 19:44:54 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:12:06 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 

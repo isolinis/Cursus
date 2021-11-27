@@ -6,43 +6,57 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 19:53:38 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/26 20:46:34 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:13:31 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 #include "push_swap.h"
 #include "../../Libft/libft.h"
 
+int	ft_is_bit_set(int num, int bitp)
+{
+	if (num & (1 << (bitp - 1)))
+		return (1);
+	else
+		return (0);
+}
+
+int	ft_find_bit_count(int num)
+{
+	int	count;
+	int	iteration;
+
+	count = 0;
+	iteration = 0;
+	while (num)
+	{
+		count += num & 1;
+		num >>= 1;
+		iteration++;
+	}
+	return (iteration);
+}
+
 void	ft_radix_sort(t_list **stack_src, t_list **stack_dst, int size)
 {
-	t_list	*ref_src;
-	t_list	*ref_dst;
-	int		i;
-	int		p;
+	int		iteration;
+	int		bitp;
+	int		ref_b;
 
-	ref_src = *stack_src;
-	ref_dst = *stack_dst;
-	i = 1;
-	p = 1;
-	while (p)
+	iteration = ft_find_bit_count(size);
+	bitp = 1;
+	ref_b = 0;
+	while (iteration)
 	{
-		while (ref_src)
+		ref_b = ft_bit_a_bit(stack_src, stack_dst, size, bitp);
+		while (ref_b)
 		{
-			if (i & ref_src -> pos)
-				ft_case_ra(stack_src);
-			else
-			{
-				ft_push_stack(stack_src, stack_dst);
-				write(1, "pb\n", 3);
-			}
-			ref_src = ref_src -> next;
+			ft_push_stack(stack_dst, stack_src);
+			write(1, "pa\n", 3);
+			ref_b--;
 		}
-		p = 0;
+		iteration--;
+		bitp++;
 	}
-	printf("Size: %d\n", size);
-	printf("-------------STACK A-------------------\n");
-	ft_print_stack(*stack_src);
-	printf("-------------STACK B-------------------\n");
-	ft_print_stack(*stack_dst);
 }

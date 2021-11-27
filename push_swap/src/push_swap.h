@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 11:25:40 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/26 19:53:05 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:14:49 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,9 @@ int		ft_find_pos(t_list *aux, int iteration, int min);
 void	ft_push_til_three(t_list **stack_src, int iteration, int size);
 t_list	*ft_bfr_lstlast(t_list *stack);
 void	ft_radix_sort(t_list **stack_src, t_list **stack_dst, int size);
+int		ft_is_bit_set(int num, int bitp);
+int		ft_find_bit_count(int num);
+int		ft_bit_a_bit(t_list **stack_src, t_list **stack_dst,
+			int size, int bitp);
 
 #endif
