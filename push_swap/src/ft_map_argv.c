@@ -6,12 +6,13 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 20:34:17 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/21 12:49:36 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:37:15 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "push_swap.h"
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 
 char	**ft_map_argv(int argc, char **argv)
 {

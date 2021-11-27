@@ -1,10 +1,19 @@
 NAME = push_swap
-FLAGS = -Wall -Wextra -Werror -Wno-pointer-to-int-cast -Wno-unused-result -Wno-return-local-addr
+FLAGS = -Wall -Wextra -Werror
 SANITIZE = -fsanitize=address -g3
 VALGRIND = -g -Og -std=gnu99
 INC = -I%.h -I$(LIB_DIR)%.h
 
-SRC_NAME =	push_swap.c					\
+SRC_NAME =	ft_bit_a_bit.c				\
+			ft_commands_a.c				\
+			ft_commands_b.c				\
+			ft_radix_sort.c				\
+			ft_sort_big.c				\
+			ft_sortof_five.c			\
+			ft_sortof_five_utils.c		\
+			ft_sortof_three.c			\
+			ps_order_utils.c			\
+			push_swap.c					\
 			ft_map_argv.c				\
 			ft_multi_arg.c				\
 			ft_format_check.c			\
@@ -16,7 +25,7 @@ SRC_NAME =	push_swap.c					\
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
 
-LIB_DIR = ../Libft/
+LIB_DIR = ./Libft/
 SRC_DIR = ./src/
 OBJ_DIR = ./obj/
 
@@ -25,13 +34,13 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C $(LIB_DIR) --silent
 	@make -C $(LIB_DIR) bonus --silent
-	@gcc $(FLAGS) $(VALGRIND) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
+	@gcc $(FLAGS) $(SANITIZE) -o $(NAME) $(OBJ) -L $(LIB_DIR) -lft
 	@echo "##### push_swap compiling finished! #####"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "##### Creating" [ $@ ] " #####"
-	@gcc $(FLAGS) $(VALGRIND) -o $@ -c $< $(INC)
+	@gcc $(FLAGS) $(SANITIZE) -o $@ -c $< $(INC)
 
 clean:
 	@make -C $(LIB_DIR) clean  --silent

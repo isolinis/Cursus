@@ -6,13 +6,13 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 19:53:38 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/27 18:13:31 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:37:47 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "push_swap.h"
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 
 int	ft_is_bit_set(int num, int bitp)
 {

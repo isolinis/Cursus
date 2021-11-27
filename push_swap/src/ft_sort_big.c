@@ -6,11 +6,11 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:55:27 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/27 17:22:05 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:38:08 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 #include "push_swap.h"
 
 void	ft_fill_stack(t_list *aux)

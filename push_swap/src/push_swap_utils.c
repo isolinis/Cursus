@@ -6,13 +6,12 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 23:05:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/26 16:23:46 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:40:31 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 
 t_list	*ft_bfr_lstlast(t_list *stack)
 {

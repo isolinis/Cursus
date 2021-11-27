@@ -6,13 +6,13 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 11:25:40 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/27 18:14:49 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:40:00 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "../../Libft/libft.h"
+# include "../Libft/libft.h"
 
 char	**ft_map_argv(int argc, char **argv);
 char	**ft_multi_arg(int argc, char **argv);

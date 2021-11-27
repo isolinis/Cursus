@@ -6,12 +6,13 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 19:37:42 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/25 13:24:01 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:35:51 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "push_swap.h"
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 
 void	ft_case_sb(t_list **stack)
 {

@@ -6,13 +6,13 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:25:58 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/27 18:46:51 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:35:17 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "push_swap.h"
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 
 int	ft_bit_a_bit(t_list **stack_src, t_list **stack_dst, int size, int bitp)
 {

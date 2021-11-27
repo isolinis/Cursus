@@ -6,12 +6,12 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 16:52:55 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/27 18:44:36 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:39:43 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 
 // 1. Store arguments in an array 'args' independently on
 // how is the user input entered.

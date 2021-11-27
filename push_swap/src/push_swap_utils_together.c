@@ -6,12 +6,12 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 01:38:04 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/11/23 17:09:31 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/11/27 20:40:54 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "../../Libft/libft.h"
+#include "../Libft/libft.h"
 
 void	ft_swap_stack_inc(t_list **stack_a, t_list **stack_b)
 {
