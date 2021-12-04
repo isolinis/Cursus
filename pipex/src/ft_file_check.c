@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_mgt.c                                     :+:      :+:    :+:   */
+/*   ft_file_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 15:43:31 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/03 20:24:10 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/12/04 15:55:13 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/12/04 21:08:21 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
 #include "pipex.h"
 
-void	ft_error_mgt(int code)
+int	ft_infile_check(int fd, char *arg)
 {
-	errno = code;
-	perror("Error");
-	exit(0);
+	fd = open(arg, O_RDONLY);
+	if (fd < 0)
+	{
+		if (access(arg, F_OK) != 0)
+			ft_error_mgt(2);
+		else
+			ft_error_mgt(13);
+	}
+	return (fd);
+}
+
+int	ft_outfile_check(int fd, char *arg)
+{
+	fd = open(arg, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+	if (fd < 0)
+		ft_error_mgt(13);
+	return (fd);
 }

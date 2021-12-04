@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 16:01:21 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/03 17:10:59 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/06/04 19:07:31 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/12/04 21:16:44 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef LIBFT_H
+# define LIBFT_H
+#include <stdlib.h>
 
-void	ft_error_mgt(int code);
-char	*ft_cmd_exist(char *arg, char **envp);
+size_t	ft_strlen(const char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	**ft_split(char const *s, char c);
 
 #endif

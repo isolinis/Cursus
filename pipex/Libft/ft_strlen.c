@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_pipe.c                                   :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 12:54:59 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/03 20:08:02 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/06/07 12:37:53 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/07/01 11:24:10 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_create_pipe(void)
+size_t	ft_strlen(const char *s)
 {
-	int	fd1[2];
-	int fd2[2];
-	int	status;
-	int	pid;
+	size_t	i;
 
-	pipe(fd1);
-	pid = fork();
-	if (pid == 0)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		close(fd1[0]);
-		dup2(fd1[1], 1);
-		close(fd[1]);
-		execve("/bin/ls", "ls", "-l", NULL);
+		i++;
 	}
-	else
-	{
-		close(fd1[1]);
-		pipe(fd2);
-		pid = fork();
-		if (pid == 0)
-		{
-			close(fd2[0]);
-			dup2(int
-		}
-		else
-		{
-
-		}
-	}
+	return (i);
 }
