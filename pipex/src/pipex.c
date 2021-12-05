@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:39:35 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/04 21:09:19 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:35:54 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv, char **envp)
 		if (!(data.path1) || !(data.path2))
 			ft_error_mgt(3);
 		data.fd1 = ft_infile_check(data.fd1, argv[1]);
+		if (!(data.path1))
+			data.fd1 = 0;
 		data.fd2 = ft_outfile_check(data.fd2, argv[4]);
 		data.cmd1 = ft_split(argv[2], ' ');
 		data.cmd2 = ft_split(argv[3], ' ');
