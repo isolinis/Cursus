@@ -6,12 +6,15 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:54:59 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/04 23:55:35 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/12/05 20:53:48 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <errno.h>
 #include <sys/wait.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "pipex.h"
 
 int	ft_create_child1(t_data data, char **envp, int fd[])
@@ -20,7 +23,10 @@ int	ft_create_child1(t_data data, char **envp, int fd[])
 
 	pid = fork();
 	if (pid < 0)
-		ft_error_mgt(10);
+	{
+		perror("fork failed");
+		exit(EXIT_FAILURE);
+	}
 	if (pid == 0)
 	{
 		dup2(data.fd1, 0);
@@ -29,6 +35,7 @@ int	ft_create_child1(t_data data, char **envp, int fd[])
 		close(fd[0]);
 		close(data.fd1);
 		execve(data.path1, data.cmd1, envp);
+		exit(0);
 	}
 	return (pid);
 }
@@ -48,6 +55,7 @@ int	ft_create_child2(t_data data, char **envp, int fd[])
 		close(fd[1]);
 		close(data.fd2);
 		execve(data.path2, data.cmd2, envp);
+		exit(0);
 	}
 	return (pid);
 }
