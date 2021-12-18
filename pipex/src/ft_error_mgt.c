@@ -6,11 +6,10 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 15:43:31 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/05 20:15:15 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/12/07 22:55:41 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
 #include "pipex.h"

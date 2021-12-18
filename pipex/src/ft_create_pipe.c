@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:54:59 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/05 20:53:48 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/12/11 14:01:04 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_create_child1(t_data data, char **envp, int fd[])
 	}
 	if (pid == 0)
 	{
+		if (data.fd1 == -1)
+			exit(1);
 		dup2(data.fd1, 0);
 		dup2(fd[1], 1);
 		close(fd[1]);

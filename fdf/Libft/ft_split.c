@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:57:12 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/07 22:19:44 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/12/18 13:07:02 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	n = ft_get_nbr_words(s, c);
-	array = (char **) malloc(sizeof(char *) * (n + 1));
+	array = (char **) malloc(sizeof(char *) * (n + 2));
 	if (!array)
 		return (NULL);
 	array[n] = 0;

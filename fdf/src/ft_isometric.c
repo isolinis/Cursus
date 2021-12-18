@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmd_exist.c                                     :+:      :+:    :+:   */
+/*   ft_isometric.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 15:40:39 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/07 22:54:10 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/12/18 18:53:35 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/12/18 22:58:31 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "pipex.h"
-#include "../Libft/libft.h"
+#include "fdf.h"
+#include <stdlib.h>
+#include <math.h>
 
-void	ft_free_array(char **array)
+int	ft_isometric_x(int x, int y)
 {
-	int	i;
+	double	aux_x;
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
+	aux_x = 0;
+	aux_x = (x - y) * cos(0.8);
+	return (aux_x);
 }
 
-char	*ft_cmd_exist(char **routes)
+int	ft_isometric_y(int x, int y, int z)
 {
-	int		i;
-	char	*path;
+	double	aux_y;
 
-	i = 0;
-	while (routes[i])
-	{
-		if (access(routes[i], F_OK) == 0)
-			path = routes[i];
-		i++;
-	}
-	return (path);
+	aux_y = 0;
+	aux_y = (x - y) * sin(0.8) - z;
+	return (aux_y);
 }

@@ -1,43 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmd_exist.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 15:40:39 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/07 22:54:10 by jsolinis         ###   ########.fr       */
+/*   Created: 2021/06/08 09:17:50 by jsolinis          #+#    #+#             */
+/*   Updated: 2021/11/07 13:21:47 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "pipex.h"
-#include "../Libft/libft.h"
+#include "libft.h"
 
-void	ft_free_array(char **array)
+int	ft_isdigit(int c)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-
-char	*ft_cmd_exist(char **routes)
-{
-	int		i;
-	char	*path;
-
-	i = 0;
-	while (routes[i])
-	{
-		if (access(routes[i], F_OK) == 0)
-			path = routes[i];
-		i++;
-	}
-	return (path);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

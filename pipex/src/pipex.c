@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:39:35 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/05 21:05:55 by jsolinis         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:20:45 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,23 @@ void	ft_free_struct(t_data data)
 {
 	ft_free_array(data.cmd1);
 	ft_free_array(data.cmd2);
-	free(data.path1);
-	free(data.path2);
+	ft_free_array(data.routes1);
+	ft_free_array(data.routes2);
+}
+
+void	ft_final_routes(char **argv, char **envp, t_data *data)
+{
+	char	*path;
+	char	**routes;
+
+	path = ft_create_route(envp);
+	routes = ft_get_routes(path);
+	data -> routes1 = ft_get_com_routes(argv[2], routes);
+	path = ft_create_route(envp);
+	routes = ft_get_routes(path);
+	data -> routes2 = ft_get_com_routes(argv[3], routes);
+	data -> path1 = ft_cmd_exist(data -> routes1);
+	data -> path2 = ft_cmd_exist(data -> routes2);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -35,19 +50,15 @@ int	main(int argc, char **argv, char **envp)
 		ft_error_mgt(22);
 	else
 	{
-		data.path1 = ft_cmd_exist(argv[2], envp);
-		data.path2 = ft_cmd_exist(argv[3], envp);
+		ft_final_routes(argv, envp, &data);
 		if (!(data.path1) || !(data.path2))
 			ft_error_mgt(3);
 		data.fd1 = ft_infile_check(data.fd1, argv[1]);
-		if (!(data.path1))
-			data.fd1 = 0;
 		data.fd2 = ft_outfile_check(data.fd2, argv[4]);
 		data.cmd1 = ft_split(argv[2], ' ');
 		data.cmd2 = ft_split(argv[3], ' ');
 		ft_create_pipe(data, envp);
 		ft_free_struct(data);
 	}
-	system("leaks pipex");
 	return (0);
 }
