@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 20:34:26 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/18 23:11:33 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/03 16:40:43 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,29 @@
 #include <stdio.h>
 #include "fdf.h"
 #include "../Libft/libft.h"
+#include "../mlx/mlx.h"
+
+int	key_hook(int keycode, t_vars *vars)
+{
+	if (keycode == 53)
+	{
+		mlx_destroy_window(vars -> mlx, vars -> win);
+		system("leaks fdf");
+		exit(0);
+	}
+	else if (keycode == 124)
+	{
+		vars->map.x_start += 10;
+		ft_genesis(vars);
+	}
+	return (0);
+}
+
+int	close_win(t_vars *vars)
+{
+	mlx_destroy_window(vars -> mlx, vars -> win);
+	exit(0);
+}
 
 void	ft_get_map(t_vars *vars, char *arg)
 {
@@ -50,7 +73,8 @@ void	ft_store_contents(t_vars *vars, char *arg)
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)
 		exit(0);
-	vars->map.coords = (int **) malloc (vars->map.height * sizeof(int *));
+	vars->map.coords = (t_coords **) malloc (vars->map.height
+			* sizeof(t_coords *));
 	while (y < vars->map.height)
 	{
 		aux = get_next_line(fd);

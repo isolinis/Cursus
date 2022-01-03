@@ -6,93 +6,61 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:14:40 by jsolinis          #+#    #+#             */
-/*   Updated: 2021/12/18 23:09:23 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/03 16:09:24 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "fdf.h"
 #include "../mlx/mlx.h"
 
-void	ft_bresenham_x(t_vars *vars, int x1, int x2, int y1, int y2)
+void	ft_draw_image(t_vars *vars, int x, int y, int color)
 {
-	int	x;
-	int	y;
-	int	dif_x;
-	int	dif_y;
-	int	slope;
+	char	*dst;
 
-	x = x1;
-	y = y1;
-	dif_x = x2 - x1;
-	dif_y = y2 - y1;
-	slope = (2 * dif_y) - dif_x;
-	while (x <= x2)
-	{
-		mlx_pixel_put(vars->mlx, vars->win, x, y, 0xFF0000);
-		x++;
-		if (slope < 0)
-			slope = slope + 2 * dif_y;
-		else
-		{
-			slope = slope + (2 * dif_y) - (2 * dif_x);
-			y++;
-		}
-	}
+	if (x < 0 || y < 0 || y >= 1080 || x >= 1920)
+		return ;
+	dst = vars->addr + (y * vars->line_length + x * (vars->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-void	ft_bresenham_y(t_vars *vars, int x1, int x2, int y1, int y2)
+void	ft_paint_down(t_vars *vars, int x, int y)
 {
-	int	x;
-	int	y;
-	int	dif_x;
-	int	dif_y;
-	int	slope;
+	int	coord_start_d[3];
+	int	coord_down[3];
 
-	x = x1;
-	y = y1;
-	dif_x = x2 - x1;
-	dif_y = y2 - y1;
-	slope = (2 * dif_x) - dif_y;
-	while (y <= y2)
-	{
-		mlx_pixel_put(vars->mlx, vars->win, x, y, 0x00FF00);
-		y++;
-		if (slope < 0)
-			slope = slope + 2 * dif_x;
-		else
-		{
-			slope = slope + (2 * dif_x) - (2 * dif_y);
-			x++;
-		}
-	}
+	coord_start_d[0] = vars->map.coords[y][x].x;
+	coord_start_d[1] = vars->map.coords[y][x].y;
+	coord_start_d[2] = vars->map.coords[y][x].z;
+	coord_down[0] = vars->map.coords[y + 1][x].x;
+	coord_down[1] = vars->map.coords[y + 1][x].y;
+	coord_down[2] = vars->map.coords[y + 1][x].z;
+	ft_isometric(vars, coord_start_d, coord_down);
 }
 
 void	ft_paint(t_vars *vars)
 {
 	int	y;
 	int	x;
-	int	sc;
+	int	coord_start_r[3];
+	int	coord_right[3];
 
-	vars->map.y_start = 100;
-	vars->map.x_start = 100;
-	vars->map.scale = 30;
-	sc = vars->map.scale;
 	y = 0;
-	while (y <= (vars->map.y_max * sc))
+	while (y < vars->map.y_max)
 	{
 		x = 0;
-		while (x < (vars->map.x_max * sc))
+		while (x < vars->map.x_max)
 		{
-			ft_bresenham_x(vars, (x + vars->map.x_start),
-				(x + vars->map.x_start + sc), (y + vars->map.y_start),
-				(y + vars->map.y_start));
-			ft_bresenham_y(vars, (x + vars->map.x_start),
-				(x + vars->map.x_start),
-				(y + vars->map.y_start), (y + vars->map.y_start + sc));
-			x += sc;
+			coord_start_r[0] = vars->map.coords[y][x].x;
+			coord_start_r[1] = vars->map.coords[y][x].y;
+			coord_start_r[2] = vars->map.coords[y][x].z;
+			coord_right[0] = vars->map.coords[y][x + 1].x;
+			coord_right[1] = vars->map.coords[y][x + 1].y;
+			coord_right[2] = vars->map.coords[y][x + 1].z;
+			ft_isometric(vars, coord_start_r, coord_right);
+			ft_paint_down(vars, x, y);
+			x++;
 		}
-		y += sc;
+		y++;
 	}
 }
