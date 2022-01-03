@@ -6,33 +6,16 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 20:34:26 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/03 16:40:43 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:17:46 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "fdf.h"
 #include "../Libft/libft.h"
 #include "../mlx/mlx.h"
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == 53)
-	{
-		mlx_destroy_window(vars -> mlx, vars -> win);
-		system("leaks fdf");
-		exit(0);
-	}
-	else if (keycode == 124)
-	{
-		vars->map.x_start += 10;
-		ft_genesis(vars);
-	}
-	return (0);
-}
 
 int	close_win(t_vars *vars)
 {

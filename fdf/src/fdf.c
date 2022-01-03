@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:01:44 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/03 16:48:26 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/03 18:33:13 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 void	ft_genesis(t_vars *vars)
 {
+	if (vars->img)
+		mlx_destroy_image(vars->mlx, vars->img);
 	vars->img = mlx_new_image(vars->mlx, 1920, 1080);
 	vars->addr = mlx_get_data_addr(vars->img,
 			&vars->bits_per_pixel, &vars->line_length, &vars->endian);
