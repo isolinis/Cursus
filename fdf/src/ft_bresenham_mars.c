@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 16:14:40 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/05 19:42:06 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/05 19:58:50 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,12 @@
 #include "fdf.h"
 #include "../mlx/mlx.h"
 
-void	ft_draw_image(t_vars *vars, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < 0 || y < 0 || y >= 1080 || x >= 1920)
-		return ;
-	dst = vars->addr + (y * vars->line_length + x * (vars->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-void	ft_paint_down(t_vars *vars, int x, int y)
+void	ft_paint_down_mars(t_vars *vars, int x, int y)
 {
 	int	coord_start_d[3];
 	int	coord_down[3];
 
-	if (y < vars->map.y_max - 1)
+	if (y < vars->map.y_max - 2)
 	{
 		coord_start_d[0] = vars->map.coords[y][x].x;
 		coord_start_d[1] = vars->map.coords[y][x].y;
@@ -41,7 +31,7 @@ void	ft_paint_down(t_vars *vars, int x, int y)
 	}
 }
 
-void	ft_paint(t_vars *vars)
+void	ft_paint_mars(t_vars *vars)
 {
 	int	coord_start_r[3];
 	int	coord_right[3];
@@ -52,7 +42,7 @@ void	ft_paint(t_vars *vars)
 		vars->x = 0;
 		while (vars->x < vars->map.x_max)
 		{
-			if (vars->x < vars->map.x_max - 1)
+			if (vars->x < vars->map.x_max - 2)
 			{
 				coord_start_r[0] = vars->map.coords[vars->y][vars->x].x;
 				coord_start_r[1] = vars->map.coords[vars->y][vars->x].y;
@@ -62,7 +52,7 @@ void	ft_paint(t_vars *vars)
 				coord_right[2] = vars->map.coords[vars->y][vars->x + 1].z;
 				ft_isometric(vars, coord_start_r, coord_right);
 			}
-			ft_paint_down(vars, vars->x, vars->y);
+			ft_paint_down_mars(vars, vars->x, vars->y);
 			vars->x++;
 		}
 		vars->y++;

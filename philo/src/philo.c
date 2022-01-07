@@ -1,25 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/04 17:45:12 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/01/07 18:02:50 by jsolinis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
+#include "../Libft/libft.h"
+#include <unistd.h>
 #include <stdio.h>
-#include <pthread.h>
+#include <stdlib.h>
+
+void	*ft_wait_room(void *params)
+{
+	t_philo	philo;
+	t_data	*data;
+
+	data = params;
+	philo = (t_philo){.tid = data->tid, .data = data};
+	printf("I'm thread %i\n", philo.tid);
+	pthread_mutex_unlock(&philo.data->genesis);
+	return (NULL);
+}
 
 int	main(int argc, char **argv)
 {
-	t_data	args;
+	t_data			data;
+	pthread_t		*thread;
 
-	if (argc != 5 && argc != 6)
+	ft_arg_check(argc, argv, &data);
+	data.tid = 0;
+	data.philos = ft_atoi(argv[1]);
+	thread = malloc (data.philos * sizeof(pthread_t));
+	pthread_mutex_init(&data.genesis, NULL);
+	while (data.tid < data.philos)
 	{
-		printf("Incorrect number of args: %i. Enter 5 or 6, try again.\n", argc);
-		return (1);
+		pthread_mutex_lock(&data.genesis);
+		pthread_create(&thread[data.tid++], NULL, ft_wait_room, &data);
 	}
-	if (!ft_get_arguments(&args, argc, argv))
+	while (data.tid >= 0)
 	{
-		printf("Incorrect type of args. Arguments must be integers.\n");
-		return (2);
+		usleep(2000);
+		pthread_join(*thread + data.tid--, NULL);
 	}
-	printf("Philos: %i\n", args.philosophers);
-	printf("Time to die: %i\n", args.time_to_die);
-	printf("Time to eat: %i\n", args.time_to_eat);
-	printf("Time to sleep: %i\n", args.time_to_sleep);
-	printf("Eat repeats: %i\n", args.eat_repeats);
+	pthread_mutex_destroy(&data.genesis);
+	free(thread);
 	return (0);
 }

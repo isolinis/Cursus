@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:10:07 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/03 15:35:34 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/05 19:43:53 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	ft_isolate(char *aux, t_vars *vars, int y)
 		ft_map_coords(tmp, x, y, vars);
 		free(tmp[x++]);
 	}
-	vars->map.x_max = x - 1;
+	vars->map.x_max = x;
 	free(tmp);
 }

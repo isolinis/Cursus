@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 20:34:26 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/03 17:17:46 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/05 20:17:31 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	ft_store_contents(t_vars *vars, char *arg)
 		ft_isolate(aux, vars, y++);
 		free(aux);
 	}
-	vars->map.y_max = y - 1;
+	vars->map.y_max = y;
 	close(fd);
 }

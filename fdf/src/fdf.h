@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 12:56:44 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/03 17:49:47 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/05 20:18:04 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_vars
 	void	*win;
 	void	*img;
 	char	*addr;
+	char	*file;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -56,6 +57,7 @@ void	ft_get_map(t_vars *vars, char *arg);
 void	ft_store_contents(t_vars *vars, char *arg);
 void	ft_genesis(t_vars *vars);
 void	ft_paint(t_vars *vars);
+void	ft_paint_mars(t_vars *vars);
 void	ft_draw_image(t_vars *vars, int x, int y, int color);
 void	ft_isometric(t_vars *vars, int p0[3], int p1[3]);
 void	connect_switch(t_vars *vars, int p0[3], int p1[3]);

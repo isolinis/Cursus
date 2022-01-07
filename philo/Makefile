@@ -1,12 +1,12 @@
 NAME = philo
 FLAGS = -Wall -Wextra -Werror
-SANITIZE = -fsanitize=address
+SANITIZE = -g -fsanitize=address
 VALGRIND = -g -Og -std=gnu99
 INC = -I%.h -I$(LIB_DIR)%.h
 
-SRC_NAME =	philo.c	\
-		ft_get_arguments.c	\
-		
+SRC_NAME =	ft_get_arguments.c	\
+			philo.c	\
+
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
 
