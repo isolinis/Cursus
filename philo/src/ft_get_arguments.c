@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:45:31 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/07 17:29:29 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/08 14:02:37 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_check_arguments(char *arg)
 			return (0);
 		i++;
 	}
-	return (1);
+	return (i);
 }
 
 int	ft_get_arguments(t_data *data, int argc, char **argv)
@@ -46,7 +46,7 @@ int	ft_get_arguments(t_data *data, int argc, char **argv)
 		data->eat_repeats = 0;
 	else
 		data->eat_repeats = ft_atoi(argv[5]);
-	return (1);
+	return (i);
 }
 
 int	ft_arg_check(int argc, char **argv, t_data *data)
@@ -54,13 +54,12 @@ int	ft_arg_check(int argc, char **argv, t_data *data)
 	if (argc != 5 && argc != 6)
 	{
 		printf("Incorrect number of args: %i. Enter 5 or 6, try again.\n", argc);
-		return (1);
+		return (0);
 	}
 	if (!ft_get_arguments(data, argc, argv))
 	{
 		printf("Incorrect type of args. Arguments must be integers.\n");
-		return (2);
+		return (0);
 	}
-	return (0);
+	return (1);
 }
-
