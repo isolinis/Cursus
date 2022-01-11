@@ -4,7 +4,8 @@ SANITIZE = -g -fsanitize=address
 VALGRIND = -g -Og -std=gnu99
 INC = -I%.h -I$(LIB_DIR)%.h
 
-SRC_NAME =	ft_philo_actions.c	\
+SRC_NAME =	ft_philo_utils.c	\
+			ft_philo_actions.c	\
 			ft_get_arguments.c	\
 			philo.c	\
 

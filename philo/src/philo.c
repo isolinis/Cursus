@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:45:12 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/09 16:14:06 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:59:42 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ void	*ft_wait_room(void *params)
 	philo = (t_philo){.tid = data->tid, .data = data};
 	pthread_mutex_init(&philo.data->fork[philo.tid], NULL);
 	gettimeofday(&philo.birthtimeval, NULL);
+	gettimeofday(&philo.lastmealval, NULL);
 	pthread_mutex_unlock(&data->genesis);
-	ft_collect_cutlery(&philo);
+	if (philo.tid % 2 != 0)
+		ft_collect_cutlery(&philo);
+	ft_thinking_corner(&philo);
 	return (NULL);
 }
 
@@ -44,7 +47,9 @@ void	ft_philo_genesis(t_data *data)
 	i = 0;
 	data->thread = malloc (data->philos * sizeof(pthread_t));
 	data->fork = malloc (data->philos * sizeof(pthread_mutex_t));
+	data->alive = 1;
 	pthread_mutex_init(&data->genesis, NULL);
+	pthread_mutex_init(&data->live, NULL);
 	while (i < data->philos)
 	{
 		pthread_mutex_lock(&data->genesis);

@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:08:34 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/05 20:17:45 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:13:23 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@ int	ft_move_img(int keycode, t_vars *vars)
 	else if (keycode == 31)
 		vars->map.scale -= 5;
 	else if (keycode == 45)
+	{
+		if (vars->map.angle > 1)
+			vars->map.angle += 3;
 		vars->map.angle += 1;
+	}
 	else if (keycode == 46)
+	{
+		if (vars->map.angle < 4)
+			vars->map.angle -= 4;
 		vars->map.angle -= 1;
+	}
 	ft_genesis(vars);
 	return (0);
 }
