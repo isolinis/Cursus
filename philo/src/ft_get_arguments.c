@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:45:31 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/08 14:02:37 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/18 18:27:52 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_check_arguments(char *arg)
 	return (i);
 }
 
-int	ft_get_arguments(t_data *data, int argc, char **argv)
+int	ft_get_arguments(t_diner *diner, int argc, char **argv)
 {
 	int	i;
 
@@ -38,25 +38,25 @@ int	ft_get_arguments(t_data *data, int argc, char **argv)
 		if (!ft_check_arguments(argv[i++]))
 			return (0);
 	}
-	data->philos = ft_atoi(argv[1]);
-	data->time_to_die = ft_atoi(argv[2]);
-	data->time_to_eat = ft_atoi(argv[3]);
-	data->time_to_sleep = ft_atoi(argv[4]);
+	diner->philos = ft_atoi(argv[1]);
+	diner->ttdie = ft_atoi(argv[2]);
+	diner->tteat = ft_atoi(argv[3]);
+	diner->ttsleep = ft_atoi(argv[4]);
 	if (argc == 5)
-		data->eat_repeats = 0;
+		diner->eat_nbr = -1;
 	else
-		data->eat_repeats = ft_atoi(argv[5]);
+		diner->eat_nbr = ft_atoi(argv[5]);
 	return (i);
 }
 
-int	ft_arg_check(int argc, char **argv, t_data *data)
+int	ft_arg_check(int argc, char **argv, t_diner *diner)
 {	
 	if (argc != 5 && argc != 6)
 	{
 		printf("Incorrect number of args: %i. Enter 5 or 6, try again.\n", argc);
 		return (0);
 	}
-	if (!ft_get_arguments(data, argc, argv))
+	if (!ft_get_arguments(diner, argc, argv))
 	{
 		printf("Incorrect type of args. Arguments must be integers.\n");
 		return (0);

@@ -6,68 +6,97 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:45:12 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/11 16:59:42 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/18 20:13:56 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include "../Libft/libft.h"
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/time.h>
 
-int	ft_time_machine(struct timeval *start, struct timeval *end)
-{
-	return (((end->tv_sec - start->tv_sec) * 1000)
-		+ ((end->tv_usec - start->tv_usec) / 1000));
-}
-
-void	*ft_wait_room(void *params)
+void	*ft_sit_up(void *params)
 {
 	t_philo	philo;
-	t_data	*data;
+	t_diner	*diner;
 
-	data = params;
-	philo = (t_philo){.tid = data->tid, .data = data};
-	pthread_mutex_init(&philo.data->fork[philo.tid], NULL);
-	gettimeofday(&philo.birthtimeval, NULL);
-	gettimeofday(&philo.lastmealval, NULL);
-	pthread_mutex_unlock(&data->genesis);
-	if (philo.tid % 2 != 0)
-		ft_collect_cutlery(&philo);
-	ft_thinking_corner(&philo);
+	diner = params;
+	philo = (t_philo){.tid = diner->tid, .time = 0,
+		.lm = 0, .dishes = diner->eat_nbr, .diner = diner};
+	pthread_mutex_init(&philo.diner->fork[philo.tid], NULL);
+	gettimeofday(&philo.sit, NULL);
+	gettimeofday(&philo.lastdish, NULL);
+	pthread_mutex_unlock(&diner->identify);
+	if (philo.tid % 2 == 0)
+		ft_usleep_adjusted(&philo, philo.current, philo.diner->tteat);
+	while (!philo.diner->leave)
+	{
+		ft_serve_dish(&philo);
+		if (philo.diner->leave || philo.dishes == 0)
+			break ;
+		ft_bed_time(&philo);
+		if (philo.diner->leave)
+			break ;
+		ft_thinking_corner(&philo);
+	}
+	pthread_mutex_destroy(&philo.diner->fork[philo.tid]);
 	return (NULL);
 }
 
-void	ft_philo_genesis(t_data *data)
+void	ft_philo_meet(t_diner *diner)
 {
 	int	i;
 
 	i = 0;
-	data->thread = malloc (data->philos * sizeof(pthread_t));
-	data->fork = malloc (data->philos * sizeof(pthread_mutex_t));
-	data->alive = 1;
-	pthread_mutex_init(&data->genesis, NULL);
-	pthread_mutex_init(&data->live, NULL);
-	while (i < data->philos)
+	while (i < diner->philos)
 	{
-		pthread_mutex_lock(&data->genesis);
-		data->tid = i + 1;
-		pthread_create(&data->thread[i++], NULL, ft_wait_room, data);
+		pthread_mutex_lock(&diner->identify);
+		diner->tid = i + 1;
+		if (pthread_create(&diner->thread[i++],
+				NULL, ft_sit_up, (void *) diner) != 0)
+		{
+			printf("Error creating the thread: %i\n", diner->tid);
+			break ;
+		}
 	}
-	while (i >= 0)
-		pthread_join(*data->thread + i--, NULL);
+}
+
+void	ft_philo_leave(t_diner *diner)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	while (i < diner->philos)
+	{
+		usleep(100);
+		ret = pthread_join(diner->thread[i++], NULL);
+		if (ret != 0)
+			printf("Error joining the thread: %i\n", ret);
+	}
+	pthread_mutex_destroy(&diner->message);
+	pthread_mutex_destroy(&diner->identify);
+	free(diner->thread);
+	free(diner->fork);
+}
+
+void	ft_mise_en_place(t_diner *diner)
+{
+	diner->leave = 0;
+	diner->thread = malloc (diner->philos * sizeof(pthread_t));
+	diner->fork = malloc (diner->philos * sizeof(pthread_mutex_t));
+	pthread_mutex_init(&diner->go, NULL);
+	pthread_mutex_init(&diner->message, NULL);
+	pthread_mutex_init(&diner->identify, NULL);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data			data;
+	t_diner	diner;
 
-	if (!ft_arg_check(argc, argv, &data))
+	if (!ft_arg_check(argc, argv, &diner))
 		return (1);
-	ft_philo_genesis(&data);
-	pthread_mutex_destroy(&data.genesis);
-	free(data.thread);
+	ft_mise_en_place(&diner);
+	ft_philo_meet(&diner);
+	ft_philo_leave(&diner);
 	return (0);
 }

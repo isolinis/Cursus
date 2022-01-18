@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:30:00 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/11 17:40:13 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/17 20:03:05 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,39 +16,54 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-typedef struct s_data
+typedef struct s_diner
 {
 	int				philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				eat_repeats;
-	int				time;
+	int				ttdie;
+	int				tteat;
+	int				ttsleep;
+	int				eat_nbr;
 	int				tid;
-	int				alive;
+	int				leave;
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
-	pthread_mutex_t	genesis;
-	pthread_mutex_t	live;
-}	t_data;
+	pthread_mutex_t	go;
+	pthread_mutex_t	message;
+	pthread_mutex_t	identify;
+}	t_diner;
 
 typedef struct s_philo
 {
 	int				tid;
-	struct timeval	birthtimeval;
-	struct timeval	lastmealval;
-	t_data			*data;
+	int				time;
+	int				lm;
+	int				dishes;
+	struct timeval	current;
+	struct timeval	sit;
+	struct timeval	lastdish;
+	t_diner			*diner;
 }	t_philo;
 
-int		ft_get_arguments(t_data *data, int argc, char **argv);
-int		ft_collect_cutlery(t_philo *philo);
-void	ft_lunch_time(t_philo *philo);
-int		ft_thinking_corner(t_philo *philo);
-int		ft_bed_time(t_philo *philo);
-int		ft_time_to_die(t_philo *philo);
-int		ft_is_alive(t_philo *philo);
+/*-----------FUNCTIONS ARGS MNGMNT RELATED-----------------*/
+
+int		ft_arg_check(int argc, char **argv, t_diner *diner);
+int		ft_get_arguments(t_diner *diner, int argc, char **argv);
+
+/*-------------FUNCTIONS ACTIONS RELATED--------------------*/
+
 int		ft_right_fork(t_philo *philo);
-int		ft_time_machine(struct timeval *start, struct timeval *end);
-int		ft_arg_check(int argc, char **argv, t_data *data);
+void	ft_serve_dish(t_philo *philo);
+void	ft_thinking_corner(t_philo *philo);
+void	ft_bed_time(t_philo *philo);
+
+/*--------------FUNCTIONS LIFE RELATED---------------------*/
+
+int		ft_time_to_leave(t_philo *philo);
+
+/*--------------FUNCTIONS TIME RELATED---------------------*/
+
+int		ft_time_machine(struct timeval start);
+void	ft_usleep_adjusted(t_philo *philo, struct timeval start, int seconds);
+void	ft_print_message(t_philo *philo, int action);
 
 #endif
