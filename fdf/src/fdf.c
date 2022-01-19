@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:01:44 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/05 20:17:54 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/19 19:16:02 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 	vars.map.scale = 10;
 	vars.map.angle = 6;
 	vars.file = argv[1];
+	vars.img = (void *) NULL;
 	ft_genesis(&vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 1L << 8, close_win, &vars);
