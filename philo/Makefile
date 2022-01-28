@@ -1,5 +1,5 @@
 NAME = philo
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -pthread
 SANITIZE = -g -fsanitize=address
 VALGRIND = -g -Og -std=gnu99
 INC = -I%.h -I$(LIB_DIR)%.h
