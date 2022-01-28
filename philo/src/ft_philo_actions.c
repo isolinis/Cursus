@@ -6,12 +6,28 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:03:22 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/19 19:10:03 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:32:31 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <stdio.h>
+
+void	ft_start_routine(t_philo *philo)
+{
+	if (philo->tid % 2 == 0)
+		ft_usleep_adjusted(philo, philo->current, philo->diner->tteat);
+	while (!philo->diner->leave)
+	{
+		ft_serve_dish(philo);
+		if (philo->diner->leave || philo->dishes == 0)
+			break ;
+		ft_bed_time(philo);
+		if (philo->diner->leave)
+			break ;
+		ft_thinking_corner(philo);
+	}
+}
 
 void	ft_thinking_corner(t_philo *philo)
 {

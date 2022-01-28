@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:30:00 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/17 20:03:05 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:30:58 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		ft_right_fork(t_philo *philo);
 void	ft_serve_dish(t_philo *philo);
 void	ft_thinking_corner(t_philo *philo);
 void	ft_bed_time(t_philo *philo);
+void	ft_start_routine(t_philo *philo);
 
 /*--------------FUNCTIONS LIFE RELATED---------------------*/
 
