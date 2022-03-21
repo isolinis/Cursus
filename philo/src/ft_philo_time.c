@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 13:00:43 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/18 19:57:02 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/03/21 19:39:29 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_time_to_leave(t_philo *philo)
 	{
 		ret = 1;
 		pthread_mutex_lock(&philo->diner->go);
-		ft_print_message(philo, 5);
+		ft_print_message(philo, "died");
 		philo->diner->leave = 1;
 		pthread_mutex_unlock(&philo->diner->go);
 		usleep(100);
@@ -43,19 +43,17 @@ int	ft_time_to_leave(t_philo *philo)
 	return (ret);
 }
 
-void	ft_usleep_adjusted(t_philo *philo, struct timeval start, int end)
+void	ft_usleep_adjusted(t_philo *philo, int end)
 {
-	int				time;
+	struct timeval	time;
 
-	time = ft_time_machine(start);
-	end += time;
-	while (time < end)
-	{
+	if (ft_time_to_leave(philo))
+		return ;
+	gettimeofday(&time, NULL);
+	while (ft_time_machine(time) < end)
 		usleep(100);
-		if (ft_time_to_leave(philo))
-			break ;
-		time = ft_time_machine(start);
-	}
+	if (ft_time_to_leave(philo))
+		return ;
 }
 
 int	ft_time_machine(struct timeval start)

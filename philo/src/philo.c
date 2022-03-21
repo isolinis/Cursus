@@ -6,11 +6,12 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:45:12 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/28 17:27:02 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/03/21 20:02:24 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,14 +19,17 @@
 void	*ft_sit_up(void *params)
 {
 	t_philo	philo;
-	t_diner *diner;
+	t_diner	*diner;
 
 	diner = (t_diner *) params;
-	philo = (t_philo){.tid = diner->tid, .time = 0,
-		.lm = 0, .dishes = diner->eat_nbr, .diner = diner};
-	gettimeofday(&philo.sit, NULL);
-	gettimeofday(&philo.lastdish, NULL);
+	philo = (t_philo){.tid = diner->tid, .lm = 0,
+		.dishes = diner->eat_nbr, .diner = diner};
+	philo.right_fork = ft_right_fork(&philo);
+	philo.left_fork = philo.tid - 1;
 	pthread_mutex_unlock(&philo.diner->identify);
+	usleep(175);
+	while (!diner->ready)
+		usleep(100);
 	ft_start_routine(&philo);
 	return (NULL);
 }
@@ -39,12 +43,15 @@ void	ft_philo_meet(t_diner *diner)
 	{
 		pthread_mutex_lock(&diner->identify);
 		diner->tid = i + 1;
-		if (pthread_create(&diner->thread[i++],
+		if (pthread_create(&diner->thread[i],
 				NULL, ft_sit_up, (void *) diner) != 0)
 		{
 			printf("Error creating the thread: %i\n", diner->tid);
 			break ;
 		}
+		if (i + 1 == diner->philos)
+			diner->ready = 1;
+		i++;
 	}
 }
 
@@ -56,7 +63,7 @@ void	ft_philo_leave(t_diner *diner)
 	while (i < diner->philos)
 	{
 		pthread_join(diner->thread[i], NULL);
-		pthread_mutex_destroy(&diner->fork[i + 1]);
+		pthread_mutex_destroy(&diner->fork[i]);
 		i++;
 	}
 	pthread_mutex_destroy(&diner->message);
@@ -72,9 +79,11 @@ void	ft_mise_en_place(t_diner *diner)
 
 	i = 0;
 	diner->leave = 0;
+	diner->ready = 0;
 	diner->thread = malloc (diner->philos * sizeof(pthread_t));
 	diner->fork_taken = (int *) malloc (diner->philos * sizeof(int));
-	diner->fork = (pthread_mutex_t *) malloc (diner->philos * sizeof(pthread_mutex_t));
+	diner->fork = (pthread_mutex_t *)
+		malloc (diner->philos * sizeof(pthread_mutex_t));
 	while (i < diner->philos)
 	{
 		pthread_mutex_init(&diner->fork[i], NULL);
