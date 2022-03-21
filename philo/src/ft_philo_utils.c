@@ -15,27 +15,24 @@
 
 void	ft_print_message(t_philo *philo, int action)
 {
+	pthread_mutex_lock(&philo->diner->message);
 	philo->time = ft_time_machine(philo->sit);
 	if (action == 1)
-	{
-		printf("%s%i - %i has taken a fork\n",
-			"\x1B[31m", philo->time, philo->tid);
-		printf("%s%i - %i has taken a fork\n",
-			"\x1B[31m", philo->time, philo->tid);
-	}
+		printf("%i %i has taken a fork\n", philo->time, philo->tid);
 	else if (action == 2)
 	{
 		philo->lm = philo->time;
-		printf("%s%i - %i is eating\n", "\x1B[32m", philo->time, philo->tid);
+		printf("%i %i is eating\n", philo->time, philo->tid);
 		if (philo->dishes > 0)
 			philo->dishes--;
 	}
 	else if (action == 3)
-		printf("%s%i - %i is sleeping\n", "\x1B[36m", philo->time, philo->tid);
+		printf("%i %i is sleeping\n", philo->time, philo->tid);
 	else if (action == 4)
-		printf("%s%i - %i is thinking\n", "\x1B[35m", philo->time, philo->tid);
+		printf("%i %i is thinking\n", philo->time, philo->tid);
 	else if (action == 5)
-		printf("%s%i - %i died\n", "\x1B[37m", philo->time, philo->tid);
+		printf("%i %i died\n", philo->time, philo->tid);
+	pthread_mutex_unlock(&philo->diner->message);
 }
 
 int	ft_right_fork(t_philo *philo)
@@ -43,8 +40,19 @@ int	ft_right_fork(t_philo *philo)
 	int	right_fork;
 
 	if (philo->tid == philo->diner->philos)
-		right_fork = 1;
+		right_fork = 0;
 	else
-		right_fork = philo->tid + 1;
+		right_fork = philo->tid;
 	return (right_fork);
+}
+
+void	ft_take_fork(t_philo *philo, int fork)
+{
+	while (philo->diner->fork_taken[fork])
+	{
+		gettimeofday(&philo->current, NULL);
+		ft_usleep_adjusted(philo, philo->current, 1);
+	}
+	pthread_mutex_lock(&philo->diner->fork[fork]);
+	philo->diner->fork_taken[fork] = 1;
 }

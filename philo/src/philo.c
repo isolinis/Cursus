@@ -61,6 +61,7 @@ void	ft_philo_leave(t_diner *diner)
 	}
 	pthread_mutex_destroy(&diner->message);
 	pthread_mutex_destroy(&diner->identify);
+	free(diner->fork_taken);
 	free(diner->fork);
 	free(diner->thread);
 }
@@ -69,12 +70,17 @@ void	ft_mise_en_place(t_diner *diner)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	diner->leave = 0;
 	diner->thread = malloc (diner->philos * sizeof(pthread_t));
+	diner->fork_taken = (int *) malloc (diner->philos * sizeof(int));
 	diner->fork = (pthread_mutex_t *) malloc (diner->philos * sizeof(pthread_mutex_t));
-	while (i <= diner->philos)
-		pthread_mutex_init(&diner->fork[i++], NULL);
+	while (i < diner->philos)
+	{
+		pthread_mutex_init(&diner->fork[i], NULL);
+		diner->fork_taken[i] = 0;
+		i++;
+	}
 	pthread_mutex_init(&diner->go, NULL);
 	pthread_mutex_init(&diner->message, NULL);
 	pthread_mutex_init(&diner->identify, NULL);

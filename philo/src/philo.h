@@ -25,6 +25,7 @@ typedef struct s_diner
 	int				eat_nbr;
 	int				tid;
 	int				leave;
+	int				*fork_taken;
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	go;
@@ -52,6 +53,7 @@ int		ft_get_arguments(t_diner *diner, int argc, char **argv);
 /*-------------FUNCTIONS ACTIONS RELATED--------------------*/
 
 int		ft_right_fork(t_philo *philo);
+void	ft_take_fork(t_philo *philo, int fork);
 void	ft_serve_dish(t_philo *philo);
 void	ft_thinking_corner(t_philo *philo);
 void	ft_bed_time(t_philo *philo);

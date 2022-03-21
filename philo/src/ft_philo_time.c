@@ -21,6 +21,8 @@ int	ft_time_to_leave(t_philo *philo)
 	int	ret;
 
 	now = ft_time_machine(philo->sit);
+	if (!philo->lm)
+		philo->lm = ft_time_machine(philo->lastdish);
 	ret = 0;
 	pthread_mutex_lock(&philo->diner->go);
 	if (philo->diner->leave)
@@ -33,12 +35,10 @@ int	ft_time_to_leave(t_philo *philo)
 	{
 		ret = 1;
 		pthread_mutex_lock(&philo->diner->go);
-		pthread_mutex_lock(&philo->diner->message);
 		ft_print_message(philo, 5);
-		pthread_mutex_unlock(&philo->diner->message);
 		philo->diner->leave = 1;
 		pthread_mutex_unlock(&philo->diner->go);
-		usleep(1000);
+		usleep(100);
 	}
 	return (ret);
 }
@@ -51,7 +51,7 @@ void	ft_usleep_adjusted(t_philo *philo, struct timeval start, int end)
 	end += time;
 	while (time < end)
 	{
-		usleep(1000);
+		usleep(100);
 		if (ft_time_to_leave(philo))
 			break ;
 		time = ft_time_machine(start);
