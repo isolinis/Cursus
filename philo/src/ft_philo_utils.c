@@ -15,8 +15,10 @@
 
 void	ft_print_message(t_philo *philo, char *action)
 {
+	if (philo->diner->leave)
+		return ;
 	pthread_mutex_lock(&philo->diner->message);
-	printf("%i %i %s\n", ft_time_machine(philo->sit), philo->tid, action);
+	printf("%i %i %s\n", ft_set_time() - philo->diner->init, philo->tid, action);
 	pthread_mutex_unlock(&philo->diner->message);
 }
 
@@ -31,14 +33,17 @@ int	ft_right_fork(t_philo *philo)
 	return (right_fork);
 }
 
-void	ft_take_fork(t_philo *philo, int fork)
+void	ft_take_forks(t_philo *philo)
 {
-	while (philo->diner->fork_taken[fork])
+	if (philo->diner->philos == 1)
 	{
-		gettimeofday(&philo->current, NULL);
-		ft_usleep_adjusted(philo, 1);
+		pthread_mutex_lock(&philo->diner->fork[philo->left_fork]);
+		ft_print_message(philo, "has taken a fork");
+		ft_usleep_adjusted(philo, philo->diner->ttdie + 10);
+		return ;
 	}
-	pthread_mutex_lock(&philo->diner->fork[fork]);
+	pthread_mutex_lock(&philo->diner->fork[philo->left_fork]);
+	pthread_mutex_lock(&philo->diner->fork[philo->right_fork]);
 	ft_print_message(philo, "has taken a fork");
-	philo->diner->fork_taken[fork] = 1;
+	ft_print_message(philo, "has taken a fork");
 }

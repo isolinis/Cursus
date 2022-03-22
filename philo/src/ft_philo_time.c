@@ -17,13 +17,6 @@
 
 int	ft_time_to_leave(t_philo *philo)
 {
-	int	now;
-	int	ret;
-
-	now = ft_time_machine(philo->sit);
-	if (!philo->lm)
-		philo->lm = ft_time_machine(philo->lastdish);
-	ret = 0;
 	pthread_mutex_lock(&philo->diner->go);
 	if (philo->diner->leave)
 	{
@@ -31,38 +24,36 @@ int	ft_time_to_leave(t_philo *philo)
 		return (1);
 	}
 	pthread_mutex_unlock(&philo->diner->go);
-	if (now - philo->lm >= philo->diner->ttdie)
+	if (ft_set_time() - philo->lm >= philo->diner->ttdie)
 	{
-		ret = 1;
 		pthread_mutex_lock(&philo->diner->go);
 		ft_print_message(philo, "died");
 		philo->diner->leave = 1;
 		pthread_mutex_unlock(&philo->diner->go);
 		usleep(100);
 	}
-	return (ret);
+	return (philo->diner->leave);
 }
 
 void	ft_usleep_adjusted(t_philo *philo, int end)
 {
-	struct timeval	time;
+	int	time;
 
-	if (ft_time_to_leave(philo))
-		return ;
-	gettimeofday(&time, NULL);
-	while (ft_time_machine(time) < end)
+	time = ft_set_time();
+	while (ft_set_time() - time < end)
+	{
 		usleep(100);
-	if (ft_time_to_leave(philo))
-		return ;
+		if (ft_time_to_leave(philo))
+			break ;
+	}
 }
 
-int	ft_time_machine(struct timeval start)
+int	ft_set_time(void)
 {
 	struct timeval	current;
-	int				time;
+	int				now;
 
 	gettimeofday(&current, NULL);
-	time = (((current.tv_sec - start.tv_sec) * 1000)
-			+ ((current.tv_usec - start.tv_usec) / 1000));
-	return (time);
+	now = current.tv_sec * 1000 + current.tv_usec / 1000;
+	return (now);
 }

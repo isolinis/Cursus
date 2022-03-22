@@ -24,9 +24,9 @@ typedef struct s_diner
 	int				ttsleep;
 	int				eat_nbr;
 	int				tid;
+	int				init;
 	int				leave;
 	int				ready;
-	int				*fork_taken;
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	go;
@@ -41,9 +41,6 @@ typedef struct s_philo
 	int				dishes;
 	int				right_fork;
 	int				left_fork;
-	struct timeval	current;
-	struct timeval	sit;
-	struct timeval	lastdish;
 	t_diner			*diner;
 }	t_philo;
 
@@ -55,7 +52,7 @@ int		ft_get_arguments(t_diner *diner, int argc, char **argv);
 /*-------------FUNCTIONS ACTIONS RELATED--------------------*/
 
 int		ft_right_fork(t_philo *philo);
-void	ft_take_fork(t_philo *philo, int fork);
+void	ft_take_forks(t_philo *philo);
 void	ft_serve_dish(t_philo *philo);
 void	ft_start_routine(t_philo *philo);
 
@@ -65,7 +62,7 @@ int		ft_time_to_leave(t_philo *philo);
 
 /*--------------FUNCTIONS TIME RELATED---------------------*/
 
-int		ft_time_machine(struct timeval start);
+int		ft_set_time(void);
 void	ft_usleep_adjusted(t_philo *philo, int seconds);
 void	ft_print_message(t_philo *philo, char *action);
 

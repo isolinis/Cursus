@@ -17,8 +17,6 @@
 
 void	ft_start_routine(t_philo *philo)
 {
-	gettimeofday(&philo->sit, NULL);
-	gettimeofday(&philo->lastdish, NULL);
 	if (philo->tid % 2 == 0)
 		ft_usleep_adjusted(philo, philo->diner->tteat);
 	while (!philo->diner->leave)
@@ -31,18 +29,16 @@ void	ft_start_routine(t_philo *philo)
 		if (philo->diner->leave)
 			break ;
 		ft_print_message(philo, "is thinking");
+
 	}
 }
 
 void	ft_serve_dish(t_philo *philo)
 {
-	ft_take_fork(philo, philo->right_fork);
-	ft_take_fork(philo, philo->left_fork);
-	gettimeofday(&philo->lastdish, NULL);
+	ft_take_forks(philo);
+	philo->lm = ft_set_time();
 	ft_print_message(philo, "is eating");
 	ft_usleep_adjusted(philo, philo->diner->tteat);
-	philo->diner->fork_taken[philo->right_fork] = 0;
 	pthread_mutex_unlock(&philo->diner->fork[philo->right_fork]);
-	philo->diner->fork_taken[philo->left_fork] = 0;
 	pthread_mutex_unlock(&philo->diner->fork[philo->left_fork]);
 }
