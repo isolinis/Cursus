@@ -6,32 +6,17 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:55:22 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/01/19 19:10:00 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/03/21 19:54:40 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <stdio.h>
 
-void	ft_print_message(t_philo *philo, int action)
+void	ft_print_message(t_philo *philo, char *action)
 {
 	pthread_mutex_lock(&philo->diner->message);
-	philo->time = ft_time_machine(philo->sit);
-	if (action == 1)
-		printf("%i %i has taken a fork\n", philo->time, philo->tid);
-	else if (action == 2)
-	{
-		philo->lm = philo->time;
-		printf("%i %i is eating\n", philo->time, philo->tid);
-		if (philo->dishes > 0)
-			philo->dishes--;
-	}
-	else if (action == 3)
-		printf("%i %i is sleeping\n", philo->time, philo->tid);
-	else if (action == 4)
-		printf("%i %i is thinking\n", philo->time, philo->tid);
-	else if (action == 5)
-		printf("%i %i died\n", philo->time, philo->tid);
+	printf("%i %i %s\n", ft_time_machine(philo->sit), philo->tid, action);
 	pthread_mutex_unlock(&philo->diner->message);
 }
 
@@ -51,8 +36,9 @@ void	ft_take_fork(t_philo *philo, int fork)
 	while (philo->diner->fork_taken[fork])
 	{
 		gettimeofday(&philo->current, NULL);
-		ft_usleep_adjusted(philo, philo->current, 1);
+		ft_usleep_adjusted(philo, 1);
 	}
 	pthread_mutex_lock(&philo->diner->fork[fork]);
+	ft_print_message(philo, "has taken a fork");
 	philo->diner->fork_taken[fork] = 1;
 }
