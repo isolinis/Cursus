@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:55:22 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/03/21 19:54:40 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:38:48 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,13 @@ void	ft_take_forks(t_philo *philo)
 		ft_usleep_adjusted(philo, philo->diner->ttdie + 10);
 		return ;
 	}
+	while (philo->diner->fork_taken[philo->left_fork]
+		&& philo->diner->fork_taken[philo->right_fork])
+		ft_usleep_adjusted(philo, 1);
 	pthread_mutex_lock(&philo->diner->fork[philo->left_fork]);
 	pthread_mutex_lock(&philo->diner->fork[philo->right_fork]);
+	philo->diner->fork_taken[philo->left_fork] = 1;
+	philo->diner->fork_taken[philo->right_fork] = 1;
 	ft_print_message(philo, "has taken a fork");
 	ft_print_message(philo, "has taken a fork");
 }

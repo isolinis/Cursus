@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:45:12 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/03/21 20:02:24 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:49:59 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_philo_leave(t_diner *diner)
 	}
 	pthread_mutex_destroy(&diner->message);
 	pthread_mutex_destroy(&diner->identify);
+	free(diner->fork_taken);
 	free(diner->fork);
 	free(diner->thread);
 }
@@ -81,11 +82,16 @@ void	ft_mise_en_place(t_diner *diner)
 	i = 0;
 	diner->leave = 0;
 	diner->ready = 0;
+	diner->fork_taken = (int *) malloc (diner->philos * sizeof(int));
 	diner->thread = malloc (diner->philos * sizeof(pthread_t));
 	diner->fork = (pthread_mutex_t *)
 		malloc (diner->philos * sizeof(pthread_mutex_t));
 	while (i < diner->philos)
-		pthread_mutex_init(&diner->fork[i++], NULL);
+	{
+		pthread_mutex_init(&diner->fork[i], NULL);
+		diner->fork_taken[i] = 0;
+		i++;
+	}
 	pthread_mutex_init(&diner->go, NULL);
 	pthread_mutex_init(&diner->message, NULL);
 	pthread_mutex_init(&diner->identify, NULL);

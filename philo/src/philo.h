@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 13:30:00 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/03/21 20:02:26 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:42:22 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_diner
 	int				init;
 	int				leave;
 	int				ready;
+	int				*fork_taken;
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	go;
