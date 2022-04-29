@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 18:50:50 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/04/29 17:37:54 by jsolinis         ###   ########.fr       */
+/*   Created: 2022/04/29 17:37:03 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/04/29 20:40:17 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef WEAPON_H
+# define WEAPON_H
 
 #include <iostream>
 
-class Zombie {
+class Weapon{
 
 private:
 
-	std::string _name;
+	std::string _type;
 
 public:
 
-	Zombie(void);
-	Zombie(std::string name);
-	~Zombie(void);
+	Weapon(void);
+	Weapon(std::string type);
+	~Weapon(void);
 
-	void setName(std::string name);
-	std::string getName(void);
+	void setType(std::string type);
+	std::string getType(void);
 
-	void announce(void);
+	void toString(void);
 };
 
 #endif
