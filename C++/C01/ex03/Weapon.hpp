@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:37:03 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/04/29 20:40:17 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:30:23 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	~Weapon(void);
 
 	void setType(std::string type);
-	std::string getType(void);
+	std::string const &getType(void);
 
 	void toString(void);
 };

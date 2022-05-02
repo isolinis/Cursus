@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:21:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/04/29 21:18:26 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:30:26 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ std::string HumanB::getName(void)
 	return (_name);
 }
 
-void HumanB::setWeapon(Weapon weapon)
+void HumanB::setWeapon(Weapon &weapon)
 {
-	_weapon = weapon;
+	_weapon = &weapon;
 }
 
-Weapon HumanB::getWeapon(void)
+Weapon *HumanB::getWeapon(void)
 {
 	return (_weapon);
 }
@@ -46,6 +46,6 @@ Weapon HumanB::getWeapon(void)
 void HumanB::attack(void)
 {
 	std::cout << _name << " attacks with his ";
-	_weapon.toString();
+	_weapon->toString();
 	std::cout << std::endl;
 }

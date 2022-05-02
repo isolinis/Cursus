@@ -6,17 +6,14 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:09:58 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/04/29 21:17:23 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:00:30 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-HumanA::HumanA (std::string name, Weapon weapon)
+HumanA::HumanA (std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {
-	_name = name;
-	_weapon = weapon;
-	return ;
 }
 
 HumanA::~HumanA (void)

@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 20:06:53 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/04/29 21:18:11 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:28:36 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class HumanB {
 private:
 
 	std::string _name;
-	Weapon		_weapon;
+	Weapon		*_weapon;
 
 public:
 
@@ -30,8 +30,8 @@ public:
 
 	void setName(std::string name);
 	std::string getName(void);
-	void setWeapon(Weapon weapon);
-	Weapon getWeapon(void);
+	void setWeapon(Weapon &weapon);
+	Weapon *getWeapon(void);
 
 	void attack(void);
 };

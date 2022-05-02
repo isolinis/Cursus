@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:35:30 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/04/29 20:40:39 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:19:34 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void Weapon::setType(std::string type)
 	_type = type;
 }
 
-std::string Weapon::getType(void)
+std::string const &Weapon::getType(void)
 {
 	return (_type);
 }

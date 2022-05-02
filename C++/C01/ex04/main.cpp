@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/29 20:01:27 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/05/02 18:00:26 by jsolinis         ###   ########.fr       */
+/*   Created: 2022/05/02 19:58:51 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/05/02 20:24:19 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-# define HUMANA_H
-
 #include <iostream>
-#include "Weapon.hpp"
+#include <fstream>
 
-class HumanA {
+int	main(void)
+{
+	std::ifstream	ifs;
+	char			c;
 
-private:
-
-	std::string	_name;
-	Weapon		&_weapon;
-
-public:
-
-	HumanA(std::string name, Weapon &weapon);
-	~HumanA(void);
-
-	void setName(std::string name);
-	std::string getName(void);
-	void setWeapon(Weapon &weapon);
-	Weapon getWeapon(void);
-
-	void attack(void);
-};
-
-#endif
+	ifs.open("test.txt", std::ifstream::in);
+	c = ifs.get();
+	while(ifs.good())
+	{
+		std::cout << c;
+		c = ifs.get();
+	}
+	ifs.close();
+	return (0);
+}
