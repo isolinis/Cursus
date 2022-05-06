@@ -18,7 +18,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
-	@echo "##### unnecessary_violence compiling finished! #####"
+	@echo "##### replace compiling finished! #####"
 
 $(OBJ_DIR)%.o: %.cpp # $(INCLUDES)
 	@mkdir -p $(OBJ_DIR)

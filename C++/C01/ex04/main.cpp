@@ -6,25 +6,55 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 19:58:51 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/05/02 20:24:19 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/06 23:20:15 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	std::ifstream	ifs;
-	char			c;
+	std::ifstream	infile;
+	std::ofstream	outfile;
+	std::string		file_name;
+	std::string		aux;
+	int				len;
 
-	ifs.open("test.txt", std::ifstream::in);
-	c = ifs.get();
-	while(ifs.good())
+	if (argc != 4)
 	{
-		std::cout << c;
-		c = ifs.get();
+		std::cerr << "Incorrect number of arguments";
+		exit (1);
 	}
-	ifs.close();
+	else
+	{
+		infile.open(argv[1], std::ios::in);
+		if (!infile)
+		{
+			std::cerr << "File does not exist";
+			exit (1);
+		}	
+		if (!(infile.good()))
+		{
+			std::cerr << "Erorr handling infile";
+			exit (1);
+		}
+		file_name = argv[1];
+		file_name.append(".replace");
+		len = strlen(argv[2]);
+		outfile.open(file_name, std::ios::trunc);
+		while(infile.good())
+		{
+			std::getline(infile, aux, ' ');
+			std::cout << "AUX: " << aux << std::endl;
+			std::cout << "ARG: " << argv[2] << std::endl;
+			if (aux.compare(argv[2]) == 0)
+				outfile << argv[3] << ' ';
+			else
+				outfile << aux << ' ';
+		}
+		infile.close();
+		outfile.close();
+	}
 	return (0);
 }
