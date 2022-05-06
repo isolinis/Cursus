@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 19:58:51 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/05/06 23:20:15 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/06 23:23:12 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int	main(int argc, char **argv)
 		while(infile.good())
 		{
 			std::getline(infile, aux, ' ');
-			std::cout << "AUX: " << aux << std::endl;
-			std::cout << "ARG: " << argv[2] << std::endl;
 			if (aux.compare(argv[2]) == 0)
 				outfile << argv[3] << ' ';
 			else
