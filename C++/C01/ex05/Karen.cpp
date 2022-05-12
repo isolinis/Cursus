@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:01:36 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/05/11 20:52:05 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:57:44 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,24 @@ void	Karen::error(void)
 
 Karen::Karen(void)
 {
+	_complains[0].level = "DEBUG";
+	_complains[0].fptr = &Karen::debug;
+	_complains[1].level = "INFO";
+	_complains[1].fptr = &Karen::info;
+	_complains[2].level = "WARNING";
+	_complains[2].fptr = &Karen::warning;
+	_complains[3].level = "ERROR";
+	_complains[3].fptr = &Karen::error;
 }
 Karen::~Karen(void)
 {
 }
 
-void	Karen::complain(std::string)
+void	Karen::complain(std::string level)
 {
-		
+	for (int i = 0; i < 4; i++)
+	{
+		if (level.compare(_complains[i].level))
+			_complains[i].Karen::(*fptr)();
+	}
 }

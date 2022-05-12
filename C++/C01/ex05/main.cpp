@@ -1,43 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 18:58:11 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/05/12 20:03:08 by jsolinis         ###   ########.fr       */
+/*   Created: 2022/05/12 18:58:36 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/05/12 19:01:03 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Karen.hpp"
 #include <iostream>
-#include "Zombie.hpp"
 
-Zombie::Zombie(void)
+int	main (void)
 {
-	return ;
-}
-Zombie::Zombie(std::string name)
-{
-	_name = name;
-}
+	Karen k = Karen();
 
-Zombie::~Zombie(void)
-{
-	std::cout << _name << " has been successfully killed!" << std::endl;
-}
-
-void Zombie::setName(std::string name)
-{
-	_name = name;
-}
-
-std::string Zombie::getName(void)
-{
-	return (_name);
-}
-
-void Zombie::announce(void)
-{
-	std::cout << _name << " BraiiiiiiinnnzzzZ..." << std::endl;
+	k.complain("debug");
+	return (0);
 }
