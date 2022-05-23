@@ -48,7 +48,8 @@ void	Karen::complain(std::string level)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (level.compare(_complains[i].level))
-			_complains[i].Karen::(*fptr)();
+		void (Karen::*do_complain)(void) = _complains[i].fptr;
+		if (level.compare(_complains[i].level) == 0)
+			(this->*do_complain)();
 	}
 }

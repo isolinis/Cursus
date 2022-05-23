@@ -17,6 +17,9 @@ int	main (void)
 {
 	Karen k = Karen();
 
-	k.complain("debug");
+	k.complain("DEBUG");
+	k.complain("INFO");
+	k.complain("WARNING");
+	k.complain("ERROR");
 	return (0);
 }
