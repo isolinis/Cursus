@@ -1,15 +1,13 @@
-NAME = zombies
-CC = g++
+NAME = a.out
+CC = clang++
 FLAGS = -Wall -Wextra -Werror
 NINETYEIGHT = -std=c++98 -pedantic
 SANITIZE = -g -fsanitize=address
 
-SRC_NAME =	Zombie.cpp \
-			newZombie.cpp \
-			randomChump.cpp \
-			main.cpp \
+SRC_NAME =	main.cpp \
+			Fixed.cpp \
 
-INCLUDES = Zombie.hpp \
+INCLUDES = Fixed.hpp \
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
@@ -20,13 +18,13 @@ OBJ_DIR = ./obj/
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) -g -o $(NAME) $(OBJ)
-	@echo "##### zombies compiling finished! #####"
+	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
+	@echo "##### Program compiling finished! #####"
 
 $(OBJ_DIR)%.o: %.cpp $(INCLUDES)
 	@mkdir -p $(OBJ_DIR)
 	@echo "##### Creating" [ $@ ] " #####"
-	$(CC) $(FLAGS) -g -c $< -I. -o $@
+	$(CC) $(FLAGS) -c $< -I. -o $@
 
 clean:
 	@rm -f $(OBJ)
