@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 19:51:27 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 20:50:09 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:01:46 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void)
 	const	WrongAnimal* wrongMeta = new WrongAnimal();
 	const	Animal* j = new Dog();
 	const	Animal* i = new Cat();
-	const	WrongCat* k = new WrongCat();
+	const	WrongAnimal* k = new WrongCat();
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
 	std::cout << k->getType() << " " << std::endl;

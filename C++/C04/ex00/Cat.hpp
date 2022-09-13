@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 19:45:50 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 21:35:39 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:02:53 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ public:
 	Cat(void);
 	~Cat(void);
 
-	virtual void	makeSound(void) const;
+	void	makeSound(void) const;
 };
 
 #endif
