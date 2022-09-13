@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 21:28:56 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 13:43:57 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:12:33 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap(std::string aName) : ClapTrap(aName)
 	this->hitpoints = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
-	std::cout << "Parameterized ScavTrap constructor called to construct " << aName << "." << std::endl;
+	std::cout << "Parameterized ScavTrap constructor called to construct " << this->name << "." << std::endl;
 }
 
 ScavTrap::~ScavTrap(void)

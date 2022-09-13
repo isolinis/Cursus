@@ -6,15 +6,20 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 11:48:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/07/05 21:27:30 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:48:09 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void) : name("undefined"), hitpoints(10), energy_points(10), attack_damage(0)
+{
+	std::cout << "Default constructor called to create a default instance." << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string aName) : name(aName), hitpoints(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "Default constructor called to construct " << this->name << "." << std::endl;
+	std::cout << "Parameterized constructor called to construct " << this->name << "." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& ct)

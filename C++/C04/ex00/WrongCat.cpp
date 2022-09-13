@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 20:00:55 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 13:36:58 by jsolinis         ###   ########.fr       */
+/*   Created: 2022/09/11 20:07:47 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/09/11 20:49:28 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "WrongCat.hpp"
 
-int	main(void)
+WrongCat::WrongCat(void)
 {
-	ClapTrap	ct;
-	ClapTrap	ct1("CL4P-TP");
-	ClapTrap	ct2 = ClapTrap(ct1);
-	ct.attack("FL4K");
-	ct1.takeDamage(4);
-	ct.takeDamage(20);
-	ct2.beRepaired(10);
-	return (0);
+	this->type = "Wrong-Cat";
+	std::cout << this->type << " constructor called to create a " << this->type << "." << std::endl;
+}
+
+WrongCat::~WrongCat(void)
+{
+	std::cout << this->type << " destructor called to destroy a " << this->type << "." << std::endl;
+}
+
+void	WrongCat::makeSound(void) const
+{
+	std::cout << "Meow, meow, meow!" << std::endl;
 }

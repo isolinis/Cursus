@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 11:38:37 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/07/05 20:05:14 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/07/15 21:08:53 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ private:
 
 public:
 
+	ClapTrap(void);
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap& ct);
 	ClapTrap& operator=(const ClapTrap& ct);

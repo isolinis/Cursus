@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 21:04:13 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/07/05 21:50:21 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:51:58 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class ScavTrap : public ClapTrap {
 
 public:
 
+	ScavTrap(void);
 	ScavTrap(std::string name);
 	~ScavTrap(void);
 

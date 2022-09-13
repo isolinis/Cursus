@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 11:48:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 13:40:19 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:05:31 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(void) : name("undefined"), hitpoints(10), energy_points(10), 
 
 ClapTrap::ClapTrap(std::string aName) : name(aName), hitpoints(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "Parameterized constructor called to construct " << this->name << "." << std::endl;
+	std::cout << "Name constructor called to construct " << this->name << "." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& ct)

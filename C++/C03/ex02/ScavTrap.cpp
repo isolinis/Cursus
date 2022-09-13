@@ -6,18 +6,26 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 21:28:56 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/07/05 21:55:50 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:10:44 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap(void)
+{
+	this->hitpoints = 100;
+	this->energy_points = 50;
+	this->attack_damage = 20;
+	std::cout << "Default ScavTrap constructor called to create a default instance." << std::endl;
+}
 
 ScavTrap::ScavTrap(std::string aName) : ClapTrap(aName)
 {
 	this->hitpoints = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
-	std::cout << "Default ScavTrap constructor called to construct " << aName << "." << std::endl;
+	std::cout << "Parameterized ScavTrap constructor called to construct " << this->name << "." << std::endl;
 }
 
 ScavTrap::~ScavTrap(void)

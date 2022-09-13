@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:40:16 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 14:00:42 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:13:36 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ FragTrap::FragTrap(void)
 	this->hitpoints = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
-	std::cout << "Default FragTrap constructor called to create a default instance." << std::endl;
+	std::cout << "Default FragTrap constructor called." << std::endl;
 }
 
 FragTrap::FragTrap(std::string aName) : ClapTrap(aName)
@@ -25,7 +25,7 @@ FragTrap::FragTrap(std::string aName) : ClapTrap(aName)
 	this->hitpoints = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;
-	std::cout << "Parameterized FragTrap constructor called to construct " << aName << "." << std::endl;
+	std::cout << "Name FragTrap constructor called to construct " << this->name << "." << std::endl;
 }
 
 FragTrap::~FragTrap(void)

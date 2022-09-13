@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 20:00:55 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 13:36:58 by jsolinis         ###   ########.fr       */
+/*   Created: 2022/09/11 20:03:37 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/09/11 20:32:22 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Dog.hpp"
 
-int	main(void)
+Dog::Dog(void)
 {
-	ClapTrap	ct;
-	ClapTrap	ct1("CL4P-TP");
-	ClapTrap	ct2 = ClapTrap(ct1);
-	ct.attack("FL4K");
-	ct1.takeDamage(4);
-	ct.takeDamage(20);
-	ct2.beRepaired(10);
-	return (0);
+	this->type = "Dog";
+	std::cout << this->type << " constructor called to create a " << this->type << "." << std::endl;
+}
+
+Dog::~Dog(void)
+{
+	std::cout << this->type << " destructor called to destroy a " << this->type << "." << std::endl;
+}
+
+void	Dog::makeSound(void) const
+{
+	std::cout << "Woof, woof, woof!" << std::endl;
 }

@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 11:38:37 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 13:41:15 by jsolinis         ###   ########.fr       */
+/*   Created: 2022/09/11 19:19:34 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/09/11 20:43:24 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <iostream>
 
-class ClapTrap {
+class WrongAnimal {
 
 protected:
 
-	std::string	name;
-	int			hitpoints;
-	int			energy_points;
-	int			attack_damage;
+	std::string	type;
 
 public:
 
-	ClapTrap(void);
-	ClapTrap(std::string aName);
-	ClapTrap(const ClapTrap& ct);
-	ClapTrap& operator=(const ClapTrap& ct);
-	~ClapTrap(void);
+	WrongAnimal(void);
+	WrongAnimal(const WrongAnimal& wrongAnimal);
+	WrongAnimal& operator=(const WrongAnimal& wrongAnimal);
+	~WrongAnimal(void);
 
-	void	attack(std::string const& target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
+	void			setType(std::string type);
+	std::string		getType(void) const;
+	void			makeSound(void) const;
 };
 
 #endif
