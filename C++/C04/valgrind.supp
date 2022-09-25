@@ -1,0 +1,8 @@
+{
+   fwrite_leak
+   Memcheck:Leak
+   fun:malloc
+   ...
+   fun:fwrite
+   ...
+}

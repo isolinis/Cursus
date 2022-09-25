@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/11 19:53:36 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/09/25 16:31:55 by jsolinis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Animal.hpp"
+
+Animal::Animal(void) : type("undefined")
+{
+	std::cout << "Default animal constructor called to create an " << this->type << " animal." << std::endl;
+}
+
+Animal::Animal(const Animal& animal)
+{
+	this->type = animal.type;
+	std::cout << "Copy animal constructor called to create a copy of " << this->type << " animal." << std::endl;
+}
+
+Animal& Animal::operator=(const Animal& animal)
+{
+	if (this != &animal)
+		this->type = animal.type;
+	std::cout << "Assignation animal operator called to assign an animal of type " << animal.type << " animal." << std::endl;
+	return (*this);
+}
+
+Animal::~Animal(void)
+{
+	std::cout << "Destructor animal called to destroy " << this->type << " animal." << std::endl;
+}
+
+void	Animal::setType(std::string type)
+{
+	this->type = type;
+}
+
+std::string	Animal::getType(void) const
+{
+	return (this->type);
+}
