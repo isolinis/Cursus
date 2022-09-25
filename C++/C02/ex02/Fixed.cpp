@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 18:58:11 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/05/12 20:03:08 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/25 13:50:09 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ Fixed Fixed::operator*(const Fixed& f) const
 {
 	Fixed ret(0);
 
-	ret = Fixed(this->toFloat() * f.toFloat());
+	ret._fixed_point = Fixed(this->toFloat() * f.toFloat());
 	return (ret);
 }
 
