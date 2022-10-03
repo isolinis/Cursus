@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 21:04:13 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/25 16:38:16 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/10/03 19:12:02 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ public:
 
 	ScavTrap(void);
 	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap& st);
+	ScavTrap& operator=(const ScavTrap& st);
 	~ScavTrap(void);
 
 	void	attack(std::string const& target);

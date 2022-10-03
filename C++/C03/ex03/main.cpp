@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 20:00:55 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/07/15 22:12:58 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/10/03 20:13:29 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	main(void)
 	std::cout << "====================================================================================================" << std::endl;
 	DiamondTrap	dt("DI4M-TP");
 	dt.attack("FR4G-TP");
+	std::cout << dt.get_hitpoints() << std::endl;
+	std::cout << dt.get_energy_points() << std::endl;
+	std::cout << dt.get_attack_damage() << std::endl;
 	dt.guardGate();
 	dt.highFivesGuys();
 	dt.whoAmI();

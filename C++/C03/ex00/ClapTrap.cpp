@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 11:48:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/23 17:55:32 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:50:32 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 ClapTrap::ClapTrap(void) : _name("undefined"), _hitpoints(10), _energy_points(10), _attack_damage(0)
 {
-	std::cout << "Default constructor called to construct a default instance." << std::endl;
+	std::cout << "Default ClapTrap constructor called to construct a default instance." << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10), _energy_points(10), _attack_damage(0)
 {
-	std::cout << "Parameterized constructor called to construct " << name << "." << std::endl;
+	std::cout << "Parameterized ClapTrap constructor called to construct " << name << "." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& ct)
@@ -46,7 +46,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& ct)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called to destroy " << this->_name << "." << std::endl;
+	std::cout << "ClapTrap destructor called to destroy " << this->_name << "." << std::endl;
 }
 
 void	ClapTrap::attack(std::string const& target)

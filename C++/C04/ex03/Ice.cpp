@@ -6,20 +6,15 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 16:44:09 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/25 17:25:26 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:47:32 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice(void) : AMateria(void)
+Ice::Ice(void) : AMateria("ice")
 {
 	std::cout << "Default " << this->type << " ice materia constructor called." << std::endl;
-}
-
-Ice::Ice(std::string const& type) : AMateria(type)
-{
-	std::cout << "Parameterized " << this->type << " ice materia constructor called." << std::endl;
 }
 
 Ice::~Ice(void)

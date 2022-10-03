@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:40:16 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 14:00:42 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/10/03 19:23:45 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ FragTrap::FragTrap(std::string aName) : ClapTrap(aName)
 	this->energy_points = 100;
 	this->attack_damage = 30;
 	std::cout << "Parameterized FragTrap constructor called to construct " << aName << "." << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap& ft)
+{
+	this->name = ft.name;
+	this->hitpoints = ft.hitpoints;
+	this->energy_points = ft.energy_points;
+	this->attack_damage = ft.attack_damage;
+	std::cout << "Copy FragTrap constructor called." << std::endl;
+}
+
+FragTrap& FragTrap::operator=(const FragTrap& ft)
+{
+	if (this != &ft)
+	{
+		this->name = ft.name;
+		this->hitpoints = ft.hitpoints;
+		this->energy_points = ft.energy_points;
+		this->attack_damage = ft.attack_damage;
+	}
+	std::cout << "FragTrap assignation operator called." << std::endl;
+	return (*this);
 }
 
 FragTrap::~FragTrap(void)

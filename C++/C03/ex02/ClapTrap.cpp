@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 11:48:06 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/11 13:48:09 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/10/03 19:00:20 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 ClapTrap::ClapTrap(void) : name("undefined"), hitpoints(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "Default constructor called to create a default instance." << std::endl;
+	std::cout << "Default ClapTrap constructor called to create a default instance." << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string aName) : name(aName), hitpoints(10), energy_points(10), attack_damage(0)
 {
-	std::cout << "Parameterized constructor called to construct " << this->name << "." << std::endl;
+	std::cout << "Parameterized ClapTrap constructor called to construct " << this->name << "." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& ct)
@@ -28,7 +28,7 @@ ClapTrap::ClapTrap(const ClapTrap& ct)
 	this->hitpoints = ct.hitpoints;
 	this->energy_points = ct.energy_points;
 	this->attack_damage = ct.attack_damage;
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy ClapTrap constructor called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& ct)
@@ -40,13 +40,13 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& ct)
 		this->energy_points = ct.energy_points;
 		this->attack_damage = ct.attack_damage;
 	}
-	std::cout << "Assignation operator called" << std::endl;
+	std::cout << "ClapTrap assignation operator called" << std::endl;
 	return (*this);
 }
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called to destroy " << this->name << "." << std::endl;
+	std::cout << "ClapTrap destructor called to destroy " << this->name << "." << std::endl;
 }
 
 void	ClapTrap::attack(std::string const& target)
