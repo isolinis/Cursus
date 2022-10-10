@@ -14,7 +14,6 @@
 
 FragTrap::FragTrap(void)
 {
-	this->name = "undefined";
 	this->hitpoints = 100;
 	this->energy_points = 100;
 	this->attack_damage = 30;

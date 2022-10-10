@@ -12,7 +12,7 @@
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap(100, 20)
 {
 	this->hitpoints = 100;
 	this->energy_points = 50;
@@ -20,11 +20,9 @@ ScavTrap::ScavTrap(void)
 	std::cout << "Default ScavTrap constructor called to create a default instance." << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string aName) : ClapTrap(aName)
+ScavTrap::ScavTrap(std::string aName) : ClapTrap(aName) 
 {
-	this->hitpoints = 100;
 	this->energy_points = 50;
-	this->attack_damage = 20;
 	std::cout << "Parameterized ScavTrap constructor called to construct " << this->name << "." << std::endl;
 }
 

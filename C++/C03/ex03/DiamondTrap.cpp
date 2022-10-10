@@ -12,25 +12,24 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap("undefined_clap_name")
+DiamondTrap::DiamondTrap(void)
 {
-	this->_name = "undefined";
 	this->hitpoints = FragTrap::hitpoints;
 	this->energy_points = ScavTrap::energy_points;
 	this->attack_damage = FragTrap::attack_damage;
 	std::cout << "Default DiamondTrap constructor called." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string aName) : ClapTrap(aName + "_clap_name"), _name(aName)
+DiamondTrap::DiamondTrap(std::string aName) : ClapTrap(aName + "_clap_name"), name(aName)
 {
-	this->hitpoints = FragTrap::hitpoints;
 	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
 	std::cout << "Parameterized DiamondTrap constructor called to construct " << this->name << "." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& dt) : ClapTrap(dt.name + "_clap_name"), _name(dt._name)
+DiamondTrap::DiamondTrap(const DiamondTrap& dt)
 {
+	ClapTrap::name = dt.name + "_clap_name";
+	this->name = dt.name;
 	this->hitpoints = dt.get_hitpoints();
 	this->energy_points = dt.get_energy_points();
 	this->attack_damage = dt.get_attack_damage();
@@ -41,8 +40,8 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& dt)
 {
 	if (this != &dt)
 	{
-		ClapTrap(dt.name + "_clap_name");
-		this->_name = dt._name;
+		ClapTrap::name = dt.name + "_clap_name";
+		this->name = dt.name;
 		this->hitpoints = dt.get_hitpoints();
 		this->energy_points = dt.get_energy_points();
 		this->attack_damage = dt.get_attack_damage();
@@ -79,5 +78,5 @@ void	DiamondTrap::attack(std::string const& target)
 
 void	DiamondTrap::whoAmI(void)
 {
-	std::cout << "My name is " << this->_name << " & my ClapTrap name is " << ClapTrap::name << std::endl;
+	std::cout << "My name is " << this->name << " & my ClapTrap name is " << ClapTrap::name << std::endl;
 }

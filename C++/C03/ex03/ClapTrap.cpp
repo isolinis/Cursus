@@ -12,7 +12,7 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : name("undefined"), hitpoints(10), energy_points(10), attack_damage(0)
+ClapTrap::ClapTrap(void) : name(), hitpoints(10), energy_points(10), attack_damage(0)
 {
 	std::cout << "Default constructor called to create a default instance." << std::endl;
 }
@@ -22,7 +22,17 @@ ClapTrap::ClapTrap(std::string aName) : name(aName), hitpoints(10), energy_point
 	std::cout << "Name constructor called to construct " << this->name << "." << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& ct)
+ClapTrap::ClapTrap(int hitpoints, int attack_damage) : hitpoints(hitpoints), energy_points(10), attack_damage(attack_damage)
+{
+	std::cout << "Name constructor called to construct " << this->name << "." << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string aName, int hitpoints, int attack_damage) : name(aName), hitpoints(hitpoints), energy_points(10), attack_damage(attack_damage)
+{
+	std::cout << "Name constructor called to construct " << this->name << "." << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &ct)
 {
 	this->name = ct.name;
 	this->hitpoints = ct.hitpoints;
@@ -31,7 +41,7 @@ ClapTrap::ClapTrap(const ClapTrap& ct)
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap& ct)
+ClapTrap &ClapTrap::operator=(const ClapTrap &ct)
 {
 	if (this != &ct)
 	{
@@ -49,14 +59,14 @@ ClapTrap::~ClapTrap(void)
 	std::cout << "Destructor called to destroy " << this->name << "." << std::endl;
 }
 
-void	ClapTrap::attack(std::string const& target)
+void ClapTrap::attack(std::string const &target)
 {
 	std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attack_damage << " points of damage!" << std::endl;
 }
 
-void	ClapTrap::takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
-	int	remain_points = this->energy_points - amount;
+	int remain_points = this->energy_points - amount;
 	if (remain_points <= 0)
 	{
 		this->energy_points = 0;
@@ -69,7 +79,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	}
 }
 
-void	ClapTrap::beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
 	this->energy_points += amount;
 	std::cout << "ClapTrap " << this->name << " heals " << amount << " points to make a remaining " << this->energy_points << " energy points." << std::endl;

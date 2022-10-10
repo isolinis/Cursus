@@ -28,6 +28,8 @@ public:
 
 	ClapTrap(void);
 	ClapTrap(std::string aName);
+	ClapTrap(int hitpoints, int attack_damage);
+	ClapTrap(std::string aName, int hitpoints, int attack_damage);
 	ClapTrap(const ClapTrap& ct);
 	ClapTrap& operator=(const ClapTrap& ct);
 	~ClapTrap(void);
