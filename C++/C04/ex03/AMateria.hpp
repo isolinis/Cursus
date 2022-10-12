@@ -14,7 +14,9 @@
 # define AMATERIA_HPP
 
 #include <iostream>
+#include "ICharacter.hpp"
 
+class ICharacter;
 class AMateria {
 
 protected:
@@ -25,13 +27,13 @@ public:
 
 	AMateria(void);
 	AMateria(std::string const& type);
-	AMateria(const AMateria& amateria);
-	AMateria& operator=(const AMateria& amateria);
+	AMateria(const AMateria& aMateria);
+	AMateria& operator=(const AMateria& aMateria);
 	virtual	~AMateria(void);
 
 	std::string const& getType(void) const;
-	virtual AMateria*	clone(void) const = 0;
-	virtual void	use(ICharacter& target);
+	virtual AMateria* clone(void) const = 0;
+	virtual void use(ICharacter& target);
 };
 
 #endif

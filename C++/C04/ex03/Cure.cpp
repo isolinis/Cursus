@@ -6,30 +6,35 @@
 /*   By: jsolinis <jsolinis@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 17:00:05 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/09/25 17:20:00 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/10/11 20:03:21 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure(void) : AMateria(void)
-{
-	std::cout << "Default " << this->type << " cure materia constructor called." << std::endl;
+Cure::Cure(void) : AMateria("cure")
+{	
 }
 
-Cure::Cure(std::string const& type) : AMateria(type)
+Cure::Cure(const Cure& aCure)
 {
-	std::cout << "Parameterized " << this->type << " cure materia constructor called." << std::endl;
+	this->type = aCure.type;
+}
+
+Cure& Cure::operator=(const Cure& aCure)
+{
+	if (this != &aCure)
+		this->type = aCure.type;
+	return (*this);
 }
 
 Cure::~Cure(void)
 {
-	std::cout << this-type << " cure materia destructor called." << std::endl;
 }
 
 Cure*	Cure::clone(void) const
 {
-	Cure *ret = new Cure(this->type);
+	Cure *ret = new Cure();
 
 	return (ret);
 }

@@ -14,17 +14,27 @@
 
 Ice::Ice(void) : AMateria("ice")
 {
-	std::cout << "Default " << this->type << " ice materia constructor called." << std::endl;
+}
+
+Ice::Ice(const Ice& anIce)
+{
+	this->type = anIce.type;
+}
+
+Ice& Ice::operator=(const Ice& anIce)
+{
+	if (this != &anIce)
+		this->type = anIce.type;
+	return (*this);
 }
 
 Ice::~Ice(void)
 {
-	std::cout << this->type << " ice destructor called." << std::endl;
 }
 
 Ice*	Ice::clone(void) const
 {
-	Ice *ret = new Ice(this->type);
+	Ice *ret = new Ice();
 
 	return (ret);
 }
