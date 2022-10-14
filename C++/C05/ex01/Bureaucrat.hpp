@@ -40,6 +40,7 @@ public:
     int getGrade(void) const;
     void increment(void);
     void decrement (void);
+    void signForm(void)
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);

@@ -14,14 +14,13 @@
 
 int main()
 {
-    /*Bureaucrat bureaucrat1("Tony", 150);
-    Bureaucrat bureaucrat2("Malony", 35);
-    Bureaucrat bureaucrat3;*/
+    Bureaucrat bureaucrat1("Tony");
+    Bureaucrat bureaucrat2("Malony");
+    Bureaucrat bureaucrat3;
     Bureaucrat bureaucrat4("Siobhan", 10000);
 
-    bureaucrat4.getName();
     std::cout << bureaucrat4 << std::endl;
-    /*bureaucrat3 = bureaucrat1;
+    bureaucrat3 = bureaucrat1;
 
     bureaucrat1 = bureaucrat2;
     std::cout << bureaucrat1 << std::endl;
@@ -32,6 +31,6 @@ int main()
     {
         bureaucrat1.increment();
         std::cout << bureaucrat1 << std::endl;
-    }*/
+    }
     return (0);
 }
