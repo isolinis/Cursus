@@ -46,7 +46,6 @@ Bureaucrat::Bureaucrat(const std::string aName, int aGrade) try : _name(aName), 
 }
 catch (const std::exception &e)
 {
-    this->~Bureaucrat();
     std::cerr << e.what() << std::endl;
 }
 
