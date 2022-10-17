@@ -6,8 +6,10 @@ SANITIZE = -g -fsanitize=address
 
 SRC_NAME =	main.cpp \
 			Bureaucrat.cpp \
+			Form.cpp \
 
 INCLUDES =	Bureaucrat.hpp \
+			Form.hpp \
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
