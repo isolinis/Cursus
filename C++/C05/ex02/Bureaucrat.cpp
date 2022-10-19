@@ -117,7 +117,7 @@ void Bureaucrat::decrement(void)
     }
 }
 
-void Bureaucrat::signForm(Form &f, int difference) const
+void Bureaucrat::signForm(AForm &f, int difference) const
 {
     if (difference < 0)
     {

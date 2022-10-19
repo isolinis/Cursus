@@ -13,7 +13,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 class Form;
@@ -43,7 +43,7 @@ public:
     void increment(void);
     void decrement (void);
 
-    void signForm(Form& f, int difference) const;
+    void signForm(AForm& f, int difference) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
