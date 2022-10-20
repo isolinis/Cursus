@@ -14,12 +14,12 @@
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-    return ("Form grade cannot be higher than 1.");
+    return ("Form grade is too high.");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-    return ("Form grade cannot be lower than 150.");
+    return ("Form grade is too low.");
 }
 
 Form::Form(void) : _name("undefined"), _gradeToSign(150), _gradeToExecute(150), _signed(false)

@@ -24,6 +24,8 @@ public:
     ShrubberyCreationForm(const ShrubberyCreationForm& scf);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& scf);
     ~ShrubberyCreationForm(void);
+
+    void execute(Bureaucrat const& executor) const;
 };
 
 #endif

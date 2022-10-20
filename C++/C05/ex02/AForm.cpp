@@ -22,6 +22,11 @@ const char *AForm::GradeTooLowException::what() const throw()
     return ("Form grade cannot be lower than 150.");
 }
 
+const char* AForm::FormNotSignedException::what() const throw()
+{
+    return ("Form MUST be signed prior to being executed!");
+}
+
 AForm::AForm(void) : _name("undefined"), _gradeToSign(150), _gradeToExecute(150), _signed(false)
 {
     std::cout << "Default form constructor called." << std::endl;
@@ -105,6 +110,19 @@ void AForm::beSigned(const Bureaucrat &b)
 {
     int diffGradesForSigning = this->getGradeToSign() - b.getGrade();
     b.signForm(*this, diffGradesForSigning);
+}
+
+void AForm::execute(Bureaucrat const& executor) const
+{
+    try
+    {
+        if ()
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &f)
