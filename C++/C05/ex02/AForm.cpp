@@ -14,12 +14,12 @@
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-    return ("Form grade cannot be higher than 1.");
+    return ("Form grade is too high..");
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-    return ("Form grade cannot be lower than 150.");
+    return ("Form grade is too low.");
 }
 
 const char* AForm::FormNotSignedException::what() const throw()
@@ -116,13 +116,20 @@ void AForm::execute(Bureaucrat const& executor) const
 {
     try
     {
-        if ()
+        if (!this->getSigned()) {
+            FormNotSignedException notSignedForm;
+            throw notSignedForm;
+        } else if (this->getGradeToExecute() > executor.getGrade()) {
+            GradeTooLowException gradeTooLow;
+            throw gradeTooLow;
+        } else {
+            executeForm();
+        }
     }
     catch (const std::exception& e)
     {
         std::cerr << e.what() << std::endl;
     }
-
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &f)

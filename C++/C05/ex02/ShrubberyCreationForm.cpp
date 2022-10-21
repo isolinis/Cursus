@@ -24,7 +24,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string aTarget) : AForm("Shrub
     std::cout << "ShrubberyCreation form parameterized constructor called." << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& scf) : AForm(scf)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &scf) : AForm(scf)
 {
     setTarget(scf.getTarget());
     std::cout << "ShrubberyCreation form copy constructor called." << std::endl;
@@ -41,7 +41,21 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
     std::cout << "ShrubberyCreationForm destructor called." << std::endl;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
+void ShrubberyCreationForm::executeForm() const
 {
-    
+    std::ofstream os(this->getName() + "_shrubbery");
+
+    if (os.is_open())
+    {
+        os << "            ,@@@@@@@," << std::endl;
+        os << "   ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+        os << ",&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl;
+        os << ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
+        os << "%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
+        os << "%&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
+        os << "`&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
+        os << "    |o|        | |         | |" << std::endl;
+        os << "    |.|        | |         | |" << std::endl;
+        os << " \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
+    }
 }

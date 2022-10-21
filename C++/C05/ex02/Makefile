@@ -5,11 +5,17 @@ NINETYEIGHT = -std=c++98 -pedantic
 SANITIZE = -g -fsanitize=address
 
 SRC_NAME =	main.cpp \
+			AForm.cpp \
 			Bureaucrat.cpp \
-			Form.cpp \
+			PresidentialPardonForm.cpp \
+			RobotomyRequestForm.cpp \
+			ShrubberyCreationForm.cpp \
 
 INCLUDES =	Bureaucrat.hpp \
-			Form.hpp \
+			AForm.hpp \
+			PresidentialPardonForm.hpp \
+			RobotomyRequestForm.hpp \
+			ShrubberyCreationForm.hpp \
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))

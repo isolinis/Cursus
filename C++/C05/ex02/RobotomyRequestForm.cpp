@@ -12,6 +12,8 @@
 
 #include "RobotomyRequestForm.hpp"
 
+bool RobotomyRequestForm::robotomized = true;
+
 RobotomyRequestForm::RobotomyRequestForm(void) : AForm("undefined", 72, 45)
 {
     setTarget("undefined");
@@ -39,4 +41,14 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 RobotomyRequestForm::~RobotomyRequestForm(void)
 {
     std::cout << "RobotomyRequestForm destructor called." << std::endl;
+}
+
+void RobotomyRequestForm::executeForm(void) const
+{
+    if (robotomized) {
+        std::cout << "\a" << "\a" << "\a" << this->getTarget() << " has been robotomized successfully!" << std::endl;
+    } else {
+        std::cout << "A failure occurred whist trying to robotomized " << this->getTarget() << std::endl;
+    }
+    robotomized = !robotomized;
 }

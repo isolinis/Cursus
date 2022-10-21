@@ -129,12 +129,24 @@ void Bureaucrat::signForm(AForm &f, int difference) const
         else
         {
             std::cout << this->getName() << " bureaucrat signs " << f.getName() << " form." << std::endl;
-            std::cout << this->getName() << " cannot sign " << f.getName() << " form because he is " << difference << " grades lower." << std::endl;
         }
     }
     catch (std::exception &e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr << this->getName() << " cannot sign " << f.getName() << " form because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const& f) const
+{
+    try
+    {
+        f.execute(*this);
+        std::cout << this->getName() << " bureaucrat executes " << f.getName() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << this->getName() << " cannot execute " << f.getName() << " form because " << e.what() << std::endl;
     }
 }
 

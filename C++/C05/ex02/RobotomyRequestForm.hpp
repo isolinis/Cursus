@@ -17,6 +17,10 @@
 
 class RobotomyRequestForm : public AForm
 {
+private:
+
+    static bool robotomized;
+
 public:
 
     RobotomyRequestForm(void);
@@ -24,6 +28,8 @@ public:
     RobotomyRequestForm(const RobotomyRequestForm& rrf);
     RobotomyRequestForm& operator=(const RobotomyRequestForm& rrf);
     ~RobotomyRequestForm(void);
+
+    virtual void executeForm(void) const;
 };
 
 #endif

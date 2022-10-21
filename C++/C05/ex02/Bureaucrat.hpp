@@ -16,7 +16,7 @@
 #include "AForm.hpp"
 #include <iostream>
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 private:
@@ -44,6 +44,7 @@ public:
     void decrement (void);
 
     void signForm(AForm& f, int difference) const;
+    void executeForm(AForm const& form) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);

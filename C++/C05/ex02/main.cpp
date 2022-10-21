@@ -11,34 +11,35 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
-int main()
-{
-    std::cout << "===================TRY-CATCH will enter the catch as grade is too low==============" << std::endl;
-    try
-    {
-        Form form1("Form1", 10000, 150);
+int main(void) {
+    try {
+        AForm *f = new ShrubberyCreationForm("home");
+        Bureaucrat b = Bureaucrat("Aingeru", 1);
 
-        std::cout << form1.getName() << std::endl;
-        std::cout << form1 << std::endl;
+        b.signForm(*f, f->getGradeToSign() - b.getGrade());
+        b.executeForm(*f);
+        delete(f);
     }
-    catch (const std::exception &e)
-    {
+    catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
-    std::cout << "===================TRY-CATCH will not enter the catch block====================" << std::endl;
-    try
-    {
-        Bureaucrat bureaucrat1("Malony", 35);
-        Form form2("Form2", 34, 150);
-        Form form3("Form3", 36, 150);
+   /*  AForm *f[3];
+    f[0] = new ShrubberyCreationForm("home");
+    f[1] = new PresidentialPardonForm("Aingeru's mime");
+    f[2] = new RobotomyRequestForm("Your ass");
 
-        form2.beSigned(bureaucrat1);
-        form3.beSigned(bureaucrat1);
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    return (0);
+    size_t i = ~0ULL;
+    while (3 > ++i) {
+        try {
+            Bureaucrat b = Bureaucrat("Barby", 1);
+            b.signForm(*f[i], f[i]->getGradeToSign() - b.getGrade());
+            b.executeForm(*f[i]);
+        } catch (const std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+    } */
 }
