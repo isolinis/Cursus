@@ -117,21 +117,19 @@ void Bureaucrat::decrement(void)
     }
 }
 
-void Bureaucrat::signForm(AForm &f, int difference) const
+void Bureaucrat::signForm(AForm &f) const
 {
     try
     {
-        if (difference >= 0)
-        {
-            GradeTooLowException tl;
-            throw tl;
-        }
-        else
-        {
+        if (f.getGradeToSign() < this->getGrade()) {
+            GradeTooLowException tooLow;
+            throw tooLow;
+        } else {
+            f.setSigned();
             std::cout << this->getName() << " bureaucrat signs " << f.getName() << " form." << std::endl;
         }
     }
-    catch (std::exception &e)
+    catch(const std::exception& e)
     {
         std::cerr << this->getName() << " cannot sign " << f.getName() << " form because " << e.what() << std::endl;
     }
@@ -141,8 +139,15 @@ void Bureaucrat::executeForm(AForm const& f) const
 {
     try
     {
-        f.execute(*this);
-        std::cout << this->getName() << " bureaucrat executes " << f.getName() << std::endl;
+        if (f.getSigned() == false) {
+            AForm::FormNotSignedException notSignedForm;
+            throw notSignedForm;
+        } else if (f.getGradeToExecute() < this->getGrade()) {
+            GradeTooLowException gradeTooLow;
+            throw gradeTooLow;
+        } else {
+            f.execute(*this);
+        }
     }
     catch (std::exception &e)
     {

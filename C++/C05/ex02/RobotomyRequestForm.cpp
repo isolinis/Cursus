@@ -14,6 +14,11 @@
 
 bool RobotomyRequestForm::robotomized = true;
 
+const char* RobotomyRequestForm::HasBeenRobotomizedException::what() const throw()
+{
+    return ("A failure occurred whilst trying to robotomize!");
+}
+
 RobotomyRequestForm::RobotomyRequestForm(void) : AForm("undefined", 72, 45)
 {
     setTarget("undefined");
@@ -43,12 +48,36 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
     std::cout << "RobotomyRequestForm destructor called." << std::endl;
 }
 
-void RobotomyRequestForm::executeForm(void) const
+void RobotomyRequestForm::execute(const Bureaucrat& b) const
 {
-    if (robotomized) {
-        std::cout << "\a" << "\a" << "\a" << this->getTarget() << " has been robotomized successfully!" << std::endl;
-    } else {
-        std::cout << "A failure occurred whist trying to robotomized " << this->getTarget() << std::endl;
+    try
+    {
+        if (this->getSigned() == false) {
+            AForm::FormNotSignedException notSignedForm;
+            throw notSignedForm;
+        } else if (this->getGradeToExecute() < b.getGrade()) {
+            GradeTooLowException gradeTooLow;
+            throw gradeTooLow;
+        } else if (!robotomized) {
+            HasBeenRobotomizedException alreadyRobotomizedOnce;
+            throw alreadyRobotomizedOnce;
+        } else {
+            this->doExecute();
+        }
     }
+    catch (const RobotomyRequestForm::HasBeenRobotomizedException& h)
+    {
+        robotomized = !robotomized;
+        std::cerr << h.what() << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void RobotomyRequestForm::doExecute(void) const
+{
     robotomized = !robotomized;
+    std::cout << "\a" << "\a" << "\a" << this->getTarget() << " has been robotomized successfully!" << std::endl;
 }

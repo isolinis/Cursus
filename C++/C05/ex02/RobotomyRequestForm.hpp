@@ -23,13 +23,19 @@ private:
 
 public:
 
+    class HasBeenRobotomizedException : public std::exception {
+        public:
+            virtual const char* what() const throw();
+    };
+
     RobotomyRequestForm(void);
     RobotomyRequestForm(std::string aTarget);
     RobotomyRequestForm(const RobotomyRequestForm& rrf);
     RobotomyRequestForm& operator=(const RobotomyRequestForm& rrf);
     ~RobotomyRequestForm(void);
 
-    virtual void executeForm(void) const;
+    void doExecute(void) const;
+    virtual void execute(const Bureaucrat& b) const;
 };
 
 #endif

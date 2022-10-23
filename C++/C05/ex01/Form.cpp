@@ -93,8 +93,7 @@ bool Form::getSigned(void) const
 
 void Form::beSigned(const Bureaucrat &b)
 {
-    int diffGradesForSigning = this->getGradeToSign() - b.getGrade();
-    b.signForm(*this, diffGradesForSigning);
+    b.signForm(*this);
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &f)

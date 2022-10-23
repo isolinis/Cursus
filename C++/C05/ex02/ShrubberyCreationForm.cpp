@@ -41,7 +41,32 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
     std::cout << "ShrubberyCreationForm destructor called." << std::endl;
 }
 
-void ShrubberyCreationForm::executeForm() const
+void ShrubberyCreationForm::execute(const Bureaucrat &b) const
+{
+    try
+    {
+        if (getSigned() == false)
+        {
+            AForm::FormNotSignedException notSignedForm;
+            throw notSignedForm;
+        }
+        else if (getGradeToExecute() < b.getGrade())
+        {
+            GradeTooLowException gradeTooLow;
+            throw gradeTooLow;
+        }
+        else
+        {
+            this->doExecute();
+        }
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void ShrubberyCreationForm::doExecute(void) const
 {
     std::ofstream os(this->getName() + "_shrubbery");
 

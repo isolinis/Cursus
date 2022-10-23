@@ -43,7 +43,7 @@ public:
     void increment(void);
     void decrement (void);
 
-    void signForm(AForm& f, int difference) const;
+    void signForm(AForm& f) const;
     void executeForm(AForm const& form) const;
 };
 

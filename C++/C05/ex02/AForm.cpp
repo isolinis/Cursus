@@ -12,12 +12,12 @@
 
 #include "AForm.hpp"
 
-const char *AForm::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
-    return ("Form grade is too high..");
+    return ("Form grade is too high.");
 }
 
-const char *AForm::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
     return ("Form grade is too low.");
 }
@@ -29,7 +29,7 @@ const char* AForm::FormNotSignedException::what() const throw()
 
 AForm::AForm(void) : _name("undefined"), _gradeToSign(150), _gradeToExecute(150), _signed(false)
 {
-    std::cout << "Default form constructor called." << std::endl;
+    std::cout << "Default abstract form constructor called." << std::endl;
 }
 
 AForm::AForm(const std::string aName, const int aGradeToSign, const int aGradeToExecute)
@@ -47,7 +47,7 @@ try : _name(aName), _gradeToSign(aGradeToSign), _gradeToExecute(aGradeToExecute)
     }
     else
     {
-        std::cout << "Name & grade form constructor called." << std::endl;
+        std::cout << "Name & grade abstract form constructor called." << std::endl;
     }
 }
 catch (const std::exception &e)
@@ -57,18 +57,18 @@ catch (const std::exception &e)
 
 AForm::AForm(const AForm &f) : _name(f._name), _gradeToSign(f._gradeToSign), _gradeToExecute(f._gradeToExecute), _signed(f._signed)
 {
-    std::cout << "Copy form constructor called." << std::endl;
+    std::cout << "Copy abstract form constructor called." << std::endl;
 }
 
 AForm &AForm::operator=(const AForm &f)
 {
-    std::cerr << "Form " << f.getName() << " cannot be assigned to another." << std::endl;
+    std::cerr << "Abstract form " << f.getName() << " cannot be assigned to another." << std::endl;
     return (*this);
 }
 
 AForm::~AForm(void)
 {
-    std::cout << "Form destructor called." << std::endl;
+    std::cout << "Abstract form destructor called." << std::endl;
 }
 
 const std::string AForm::getName(void) const
@@ -108,33 +108,12 @@ std::string AForm::getTarget(void) const
 
 void AForm::beSigned(const Bureaucrat &b)
 {
-    int diffGradesForSigning = this->getGradeToSign() - b.getGrade();
-    b.signForm(*this, diffGradesForSigning);
-}
-
-void AForm::execute(Bureaucrat const& executor) const
-{
-    try
-    {
-        if (!this->getSigned()) {
-            FormNotSignedException notSignedForm;
-            throw notSignedForm;
-        } else if (this->getGradeToExecute() > executor.getGrade()) {
-            GradeTooLowException gradeTooLow;
-            throw gradeTooLow;
-        } else {
-            executeForm();
-        }
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+    b.signForm(*this);
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &f)
 {
-    os << f.getName() << " form; signable by bureaucrat of grade " << f.getGradeToSign()
+    os << f.getName() << " abstract form; signable by bureaucrat of grade " << f.getGradeToSign()
        << " & to be executed by bureaucrat of grade " << f.getGradeToExecute() << std::endl;
     return (os);
 }

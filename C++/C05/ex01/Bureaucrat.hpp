@@ -43,7 +43,7 @@ public:
     void increment(void);
     void decrement (void);
 
-    void signForm(Form& f, int difference) const;
+    void signForm(Form& f) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
