@@ -19,7 +19,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
-	@echo "##### Bureaucracy compiling finished! #####"
+	@echo "##### convert compiling finished! #####"
 
 $(OBJ_DIR)%.o: %.cpp $(INCLUDES)
 	@mkdir -p $(OBJ_DIR)
