@@ -300,7 +300,7 @@ void Caster::convertTypeFloat(std::string aParameter)
 {
     std::stringstream ss;
 
-    ss << aParameter;
+    ss << aParameter.erase(aParameter.length() - 1);
     ss >> this->_f;
     if (this->_f > std::numeric_limits<float>::max() || this->_f < std::numeric_limits<float>::min())
         this->_outOfFloatLimits = true;
