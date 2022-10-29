@@ -94,7 +94,6 @@ std::string Caster::checkParameterType(int paramCount, std::string input) const
         else
         {
             std::string type;
-            
             type = checkParameterIsChar(input);
             if (type == "undefined")
                 type = checkParameterIsInt(input);
@@ -144,7 +143,6 @@ std::string Caster::checkParameterIsChar(std::string aParameter) const
 
 std::string Caster::checkParameterIsInt(std::string aParameter) const
 {
-    // TODO: int max && min
     std::string::iterator it = aParameter.begin();
 
     if (*it == '+' || *it == '-')
@@ -301,7 +299,7 @@ void Caster::convertTypeFloat(std::string aParameter)
 {
     std::stringstream ss;
 
-    ss << aParameter;
+    ss << aParameter.erase(aParameter.length() - 1);
     ss >> this->_f;
     if (this->_f > std::numeric_limits<float>::max() || this->_f < std::numeric_limits<float>::min())
         this->_outOfFloatLimits = true;
