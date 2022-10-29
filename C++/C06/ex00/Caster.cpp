@@ -144,7 +144,6 @@ std::string Caster::checkParameterIsChar(std::string aParameter) const
 
 std::string Caster::checkParameterIsInt(std::string aParameter) const
 {
-    // TODO: int max && min
     std::string::iterator it = aParameter.begin();
 
     if (*it == '+' || *it == '-')
