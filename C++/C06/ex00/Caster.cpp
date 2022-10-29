@@ -94,7 +94,6 @@ std::string Caster::checkParameterType(int paramCount, std::string input) const
         else
         {
             std::string type;
-            
             type = checkParameterIsChar(input);
             if (type == "undefined")
                 type = checkParameterIsInt(input);
