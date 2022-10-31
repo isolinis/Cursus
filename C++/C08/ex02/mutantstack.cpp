@@ -6,7 +6,7 @@
 /*   By: jsolinis <jsolinis@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 12:59:27 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/10/31 14:31:58 by jsolinis         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:06:04 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ template <typename T>
 MutantStack<T>::MutantStack(const MutantStack &ms)
 {
     std::cout << "Copy MutantStack constructor called." << std::endl;
-    this = ms;
+    *this = ms;
 }
 
 template <typename T>
