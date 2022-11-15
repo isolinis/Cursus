@@ -22,7 +22,16 @@ using namespace ft;
 template <class T, class Alloc = std::allocator<T>>
 class Vector
 {
+private:
 
+    T                   value_type;
+    Alloc               allocator_type;
+    std::size_t         size_type;
+    std::ptrdiff_t      difference_type;
+    value_type&         reference;
+    const value_type&   const_reference;
+    Allocator::pointer  pointer;
+    
 };
 
 #endif
