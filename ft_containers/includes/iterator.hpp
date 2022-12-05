@@ -11,13 +11,17 @@
 /* ************************************************************************** */
 
 #ifndef ITERATOR_HPP
-# define ITERATOR_HPP
+#define ITERATOR_HPP
 
 #include <iostream>
 
-class Iterator
+namespace ft
 {
+    class Iterator
+    {
+        
+    };
 
-};
+}
 
 #endif
