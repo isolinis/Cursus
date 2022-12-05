@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.hpp                                             :+:      :+:    :+:   */
+/*   iterator.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsolinis <jsolinis@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 18:59:23 by jsolinis          #+#    #+#             */
-/*   Updated: 2022/11/15 17:50:35 by jsolinis         ###   ########.fr       */
+/*   Created: 2022/11/23 06:10:26 by jsolinis          #+#    #+#             */
+/*   Updated: 2022/11/23 06:12:24 by jsolinis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-namespace ft
+#ifndef ITERATOR_HPP
+# define ITERATOR_HPP
+
+#include <iostream>
+
+class Iterator
 {
-    class Vector;
-}
+
+};
+
+#endif
