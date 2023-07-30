@@ -11,13 +11,49 @@
 /* ************************************************************************** */
 
 #ifndef ITERATOR_HPP
-# define ITERATOR_HPP
+#define ITERATOR_HPP
 
 #include <iostream>
 
-class Iterator
+namespace ft
 {
+    template <class T>
+    class iterator
+    {
+    private:
 
-};
+        using iterator_category = std::random_access_iterator_tag;
+        using difference_type = ptrdiff_t;
+        using value_type = T;
+        using pointer = value_type*;
+        using reference = value_type&;
+
+        pointer _data;
+
+    public:
+
+        iterator(pointer ptr);
+        iterator(iterator const &other);
+        iterator& operator=(iterator const &right);
+        ~iterator(void);
+
+        bool operator==(iterator const &right) const;
+        bool operator!=(iterator const &right) const;
+
+        reference operator*(void) const;
+        pointer operator->(void) const;
+
+        // TODO: Can be dereferenced as an lvalue (if in a dereferenceable state). *a = t
+
+        iterator& operator++(void);
+        iterator& operator--(void);
+        iterator& operator++(int);
+        iterator& operator--(int);
+
+        // TODO: revised what *a++ mean
+
+    };
+
+}
 
 #endif

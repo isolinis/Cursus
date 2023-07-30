@@ -17,26 +17,42 @@
 #include <memory>
 #include "iterator.hpp"
 
-namespace ft    //pending to check how to create a separate .hpp for definition and declaration of member classes
+namespace ft
 {
-    template <class T, class A = std::allocator<T>>
-    class Vector
+    template <class T, class Alloc = std::allocator<T>>
+    class vector
     {
     private:
+
         typedef T value_type;
-        typedef A allocator_type;
-        typedef typename A::size_type size_type;
-        typedef typename A::difference difference_type;
+        typedef Alloc allocator_type;
+
+        typedef T& reference;
+        typedef const T& const_reference;
+        typedef T* pointer;
+        typedef const T* const_pointer;
 
         typedef ft::iterator iterator;
-        typedef ft::const_iterator const_iterator;
-        typedef ft::reverse_iterator reverse_iterator;
-        typedef ft::const_reverse_iterator const_reverse_iterator;
+        // typedef ft::const_iterator const_iterator;
+        // typedef ft::reverse_iterator reverse_iterator;
+        // typedef ft::const_reverse_iterator const_reverse_iterator;
 
-        typedef typename A::reference reference;
-        typedef typename A::const_reference const_reference;
-        typedef typename A::pointer pointer;
-        typedef typename A::const_pointer const_pointer;
+        typedef ptrdiff_t difference_type;
+        typedef size_t size_type;
+
+        Alloc _alloc;
+        pointer _data;
+        size_type _size;
+        size_type _capacity;
+
+    public:
+
+        explicit vector(const Alloc& alloc = allocator_type());
+        explicit vector(size_type n, const value_type& val = value_type(), const Alloc& alloc = allocator_type());
+        template<class InputIterator> vector(InputIterator first, InputIterator last, const Alloc& alloc = allocator_type()); // TODO: Constructs a container with as many elements as the range [first,last), with each element constructed from its corresponding element in that range, in the same order
+        vector (const vector& other); // TODO: Constructs a container with a copy of each of the elements in other, in the same order
+        ~vector(void);
+        vector& operator=(const vector& right);
     };
 
 }
