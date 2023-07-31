@@ -27,6 +27,10 @@ const char *BitcoinExchange::FileHandlingFailure::what() const throw()
 	return " failure handling infile => ";
 }
 
+BitcoinExchange::BitcoinExchange(void)
+{
+}
+
 BitcoinExchange::BitcoinExchange(int argc, std::string inputFilename)
 {
 	if (argc != 2 || inputFilename == "")
